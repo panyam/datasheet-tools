@@ -101,7 +101,15 @@ If you use the **Playwright MCP** plugin instead, ask the agent to run **`browse
 After PDFs land:
 
 ```bash
+<<<<<<< Updated upstream
 cd ~/work/hw/datasheet-tools
+=======
+cd ~/work/hw/Agni/main   # Agni lane checkout
+export DATASHEET_DIR=~/work/hw/datasheets
+make setup              # once: docling venv for pdf2doc
+make pdf2doc-all        # writes <part>/<stem>.doc.textproto beside each PDF
+make datasheets-status  # confirms extracted / stale
+>>>>>>> Stashed changes
 export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 make pdf2doc-all    # runs Agni pdf2doc (AGNI_DIR, default ../main) with this repo's venv
 # Provenance + judgment corrections; without overrides.yaml, titles/covers/has_electrical
@@ -111,6 +119,56 @@ cp overrides.public.yaml "$AGNI_DATASHEET_ROOT/overrides.yaml"
 python3 tools/genindex.py /tmp/idx.json \
   "$AGNI_DATASHEET_ROOT/index.yaml" "$(date +%Y-%m-%d)"
 ```
+
+## PartSpec textprotos (what Checksmith / Agni rules use)
+
+There are **two different** textproto layers. Do not confuse them.
+
+| File | Where | Consumed by |
+|------|--------|-------------|
+| **`*.doc.textproto`** | Corpus next to PDF (`ti/LM1117/LM1117.doc.textproto`) | doc-IR / future **derive/**; index generation |
+| **`*.textproto` PartSpec** | `projects/<customer>/params/` (or another `--params` dir) | **`param(mpn, SYMBOL, …)`** rules, review checklist, Checksmith via `PRANA` `--params` mount |
+
+**Connectsmith** pull-up / IO-map data lives in **xlsx + JSON under Prana `tools/connectsmith/`**. It is **not** PartSpec and does not come from the corpus pipeline.
+
+### Production path today (hand seed)
+
+Automated **derive/** (doc-IR → PartSpec) exists in Agni but is **recipe-limited**; bulk extraction for your full public set is not a one-command product yet. The supported path matches **`skills/datasheet-transcribe`**:
+
+1. **Board MPNs** — exact `Manufacturer PN` strings from the netlist (join key for `component.mpn`).
+2. **Which symbols** — from the review overlay: start from existing **`mock-*.textproto`** / per-part seeds in `projects/.../params/` and from checklist items that call `param(mpn, TSD, …)`, `supply-exceeds-abs-max`, etc. Seeding a symbol enrols that MPN in every design-wide query that mentions it (see skill §5b).
+3. **Read the sheet** — use doc-IR or PDF; record values with **`method: "hand"`** and full **`prov { page, table_or_figure, doc_ref }`**.
+4. **Write PartSpec** — one file per part (often lowercase stem); **`mpn:` must match the netlist exactly** (ordering code, not family name from `index.yaml` `covers`).
+
+Example shape (real seed):
+
+```textproto
+mpn: "TPS4H000BQPWPRQ1"
+device_class: "efuse"
+docs { id: "slvsd73b" title: "..." locator: "datasheets/ti/TPS4H000B/TPS4H000B.pdf" }
+parameters {
+  symbol: "TSD"
+  limit_kind: LIMIT_KIND_CHARACTERISTIC
+  value { max: 175 }
+  unit: "degC"
+  prov { doc_ref: "slvsd73b" page: 7 table_or_figure: "7.5 Electrical Characteristics -- T(SD) ..." method: "hand" confidence: 1.0 }
+}
+```
+
+5. **Verify load** (no design required):
+
+```bash
+cd ~/work/hw/Agni/main
+go run ./cmd/agni params TPS4H000BQPWPRQ1 --params ~/work/hw/projects/<customer>/params
+```
+
+6. **Run review / Checksmith** with the same params mount (Prana `make serve` mounts `projects/.../params`, or `agni review --params ...`).
+
+Use **`index.yaml` `variants`** to map a BOM MPN to the right PDF/doc-IR; use **`params/`** to store the numbers the engine checks.
+
+### Later: derive/
+
+When recipes cover a vendor family, **`derive.Run(doc-IR, recipes, patches, Identity)`** can emit PartSpec + manifest gaps. Today that is tested on fixtures (e.g. BSS138), not wired as `make derive-all` over the public corpus. Prefer hand seed for checklist-driven symbols until derive coverage is explicit.
 
 ## What this does not rebuild
 
