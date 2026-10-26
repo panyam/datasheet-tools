@@ -75,9 +75,7 @@ One-time setup in **datasheet-tools**:
 
 ```bash
 cd ~/work/hw/datasheet-tools
-python3 -m venv .venv
-.venv/bin/pip install -r requirements-playwright.txt
-.venv/bin/playwright install chromium
+make setup   # uv venv + requirements.txt (playwright, docling) + bundled Chromium
 ```
 
 Run against the TSV (CWD can be anywhere; corpus from `AGNI_DATASHEET_ROOT`):
@@ -98,8 +96,8 @@ If you use the **Playwright MCP** plugin instead, ask the agent to run **`browse
 After PDFs land:
 
 ```bash
-cd ~/work/hw   # or wherever pdf2doc Makefile lives
-make pdf2doc-all    # or per-file pdf2doc
+cd ~/work/hw/datasheet-tools
+make pdf2doc-all    # runs Agni pdf2doc (AGNI_DIR, default ../main) with this repo's venv
 export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 python3 ~/work/hw/datasheet-tools/tools/genindex.py /tmp/idx.json \
   "$AGNI_DATASHEET_ROOT/index.yaml" "$(date +%Y-%m-%d)"
