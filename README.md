@@ -19,7 +19,7 @@ export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 | Script | Purpose |
 |--------|---------|
 | `tools/genindex.py` | Regenerate `index.yaml` from doc-IR (no PDF reads) |
-| `tools/filter_index_public.py` | Write `index.public.yaml` (+ optional `sources.public.yaml`) for public rebuild |
+| `tools/filter_index_public.py` | Write `index.public.yaml` (+ optional `sources.public.yaml`, `overrides.public.yaml`) for public rebuild |
 | `tools/fetch_manifest.py` | curl-fetch PDFs from `sources.public.yaml` (`direct` rows; lists `playwright` for browser pass) |
 | `tools/fetch_playwright_manifest.py` | Browser-fetch TSV rows (`make setup`) |
 | `tools/sweep_pin_relations.py` | Scan doc-IR for pin-to-pin constraint candidates |

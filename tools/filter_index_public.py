@@ -187,6 +187,42 @@ def write_sources_public(
     return count
 
 
+def write_overrides_public(
+    corpus_root: str,
+    pdf_paths: frozenset[str],
+    out_path: str,
+) -> int:
+    """Copy overrides.yaml records for the kept pdfs, line for line.
+
+    Verbatim rather than re-serialized: load_sidecar keeps quoted values raw (escapes included),
+    so passing them back through yq would double-escape titles.
+    """
+    src_path = os.path.join(corpus_root, "overrides.yaml")
+    lines = [
+        "# Filtered from overrides.yaml — judgment corrections for the public rebuild.\n",
+        "# Copy to <corpus>/overrides.yaml before genindex. Regenerate with\n",
+        "# tools/filter_index_public.py --sources\n",
+        "overrides:\n",
+    ]
+    count, keep = 0, False
+    if os.path.exists(src_path):
+        with open(src_path, errors="replace") as fh:
+            for raw in fh:
+                m = re.match(r'^  "([^"]+)":\s*$', raw)
+                if m:
+                    keep = m.group(1) in pdf_paths
+                    if keep:
+                        count += 1
+                        lines.append(raw)
+                elif keep and re.match(r"^    \w+:", raw):
+                    lines.append(raw)
+                elif not raw.startswith(" "):
+                    keep = False
+    with open(out_path, "w") as fh:
+        fh.writelines(lines)
+    return count
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument(
@@ -215,7 +251,7 @@ def main() -> int:
     ap.add_argument(
         "--sources",
         action="store_true",
-        help="Also write sources.public.yaml beside the index output",
+        help="Also write sources.public.yaml and overrides.public.yaml beside the index output",
     )
     args = ap.parse_args()
 
@@ -269,6 +305,9 @@ def main() -> int:
         sources_out = os.path.join(os.path.dirname(index_out), "sources.public.yaml")
         n = write_sources_public(corpus, pdfs, sources_out)
         print(f"wrote {sources_out} ({n} source records)")
+        overrides_out = os.path.join(os.path.dirname(index_out), "overrides.public.yaml")
+        n = write_overrides_public(corpus, pdfs, overrides_out)
+        print(f"wrote {overrides_out} ({n} override records)")
 
     return 0
 

@@ -6,7 +6,7 @@ The corpus **`index.yaml`** is a catalog of documents (paths, hashes, covers/var
 
 | Step                  | Input                                        | Tool / skill                                                                                   |
 |-----------------------|----------------------------------------------|------------------------------------------------------------------------------------------------|
-| Pick public docs only | `index.yaml`                                 | `tools/filter_index_public.py` → `index.public.yaml` (+ optional `sources.public.yaml`)        |
+| Pick public docs only | `index.yaml`                                 | `tools/filter_index_public.py` → `index.public.yaml` (+ optional `sources.public.yaml`, `overrides.public.yaml`)        |
 | Download PDFs         | `source_url`, `download_method`, `pdf:` path | `skills/datasheet-download` or curl/Playwright                                                 |
 | doc-IR                | PDF on disk                                  | Agni `pdf2doc` / workspace `make pdf2doc-all`                                                  |
 | Refresh index         | doc-IR on disk                               | `tools/genindex.py` (needs `sources.yaml`, `overrides.yaml` for provenance and judgment fixes) |
@@ -46,7 +46,7 @@ Defaults keep `access: public` and `public-mirror`. Flags:
 - **`--require-electrical`** — drop briefs / non-param docs (`has_electrical: false`)
 - **`--access`** — override the allowlist (comma-separated)
 
-Outputs default to **`index.public.yaml`** and **`sources.public.yaml`** under the corpus root. They do not remove PDFs already in git; they define what a public rebuild should fetch.
+Outputs default to **`index.public.yaml`**, **`sources.public.yaml`** and **`overrides.public.yaml`** under the corpus root. They do not remove PDFs already in git; they define what a public rebuild should fetch.
 
 ## Download everything in `sources.public.yaml`
 
@@ -89,17 +89,26 @@ Use **`--headed`** if a vendor blocks headless Chromium. **`--force`** re-fetche
 
 The script visits each URL’s **origin** first (cookie wall), then **blob-fetch** + `save_as` into `$AGNI_DATASHEET_ROOT/<pdf path>`. LCSC rows use the viewer → network capture path from the download skill.
 
-### Playwright via Cursor MCP (no local install)
+What the script can and can't reach (2026-10-26): Littelfuse needs `--headed`. **ST** refuses the
+bundled Chromium (`ERR_HTTP2_PROTOCOL_ERROR` after the first hit) and **LCSC** fails CORS (its asset
+host's root redirects to `www.lcsc.com`, and headless now gets a 403 on the viewer). Fetch those two
+through the Playwright MCP instead (next section), which drives a full Chrome.
 
-If you use the **Playwright MCP** plugin instead, ask the agent to run **`browser_run_code_unsafe`** once **per row** (or per vendor origin), with **`saveAs`** set to the absolute path under `AGNI_DATASHEET_ROOT`. Use the blob-fetch snippet in **`skills/datasheet-download/SKILL.md` §4. Set MCP CWD to **`$AGNI_DATASHEET_ROOT`** so `.playwright-mcp/` is not mistaken for a vendor folder.
+### Playwright via MCP (Claude Code or Cursor)
+
+If you use the **Playwright MCP** plugin instead, ask the agent to run **`browser_run_code_unsafe`** once **per row** (or per vendor origin), with **`saveAs`** set to the absolute path under `AGNI_DATASHEET_ROOT`. Use the blob-fetch snippet in **`skills/datasheet-download/SKILL.md` §4. The MCP writes `.playwright-mcp/` (logs plus each blob as `x.pdf`) into its CWD. Run it from **`$AGNI_DATASHEET_ROOT`** and it shows up as a fake vendor in the walkers. Run it from this repo and it lands here, where `.gitignore` covers it.
 
 After PDFs land:
 
 ```bash
 cd ~/work/hw/datasheet-tools
-make pdf2doc-all    # runs Agni pdf2doc (AGNI_DIR, default ../main) with this repo's venv
 export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
-python3 ~/work/hw/datasheet-tools/tools/genindex.py /tmp/idx.json \
+make pdf2doc-all    # runs Agni pdf2doc (AGNI_DIR, default ../main) with this repo's venv
+# Provenance + judgment corrections; without overrides.yaml, titles/covers/has_electrical
+# fall back to the generator's heuristic guesses.
+cp sources.public.yaml "$AGNI_DATASHEET_ROOT/sources.yaml"
+cp overrides.public.yaml "$AGNI_DATASHEET_ROOT/overrides.yaml"
+python3 tools/genindex.py /tmp/idx.json \
   "$AGNI_DATASHEET_ROOT/index.yaml" "$(date +%Y-%m-%d)"
 ```
 
