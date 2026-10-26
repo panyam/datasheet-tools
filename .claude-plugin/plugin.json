@@ -1,0 +1,7 @@
+{
+  "name": "datasheet-tools",
+  "description": "Skills for the datasheet corpus: source public PDFs (datasheet-download) and hand-transcribe cited params (datasheet-transcribe).",
+  "version": "0.1.0",
+  "author": { "name": "Sri Panyam" },
+  "repository": "https://github.com/panyam/datasheet-tools"
+}

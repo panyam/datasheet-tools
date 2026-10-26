@@ -42,7 +42,16 @@ Cursor / Claude skills live under `skills/`:
 - `skills/datasheet-download/` — source public PDFs into the corpus tree
 - `skills/datasheet-transcribe/` — hand-transcribe cited params from PDFs
 
-Install by copying or symlinking into your skills directory (e.g. `~/.cursor/skills/` or the project’s `.cursor/skills/`). Skills assume `AGNI_DATASHEET_ROOT` for on-disk layout; review overlay paths (`projects/`, `designs/`) still come from your house-designs checkout.
+This repo is also a Claude Code plugin marketplace (`.claude-plugin/`). Install the skills from it:
+
+```bash
+/plugin install datasheet-tools --marketplace panyam/datasheet-tools
+# or, from a local checkout:
+/plugin marketplace add ~/projects/Agni/datasheet-tools
+/plugin install datasheet-tools@datasheet-tools
+```
+
+Installed skills are namespaced: `/datasheet-tools:datasheet-download`, `/datasheet-tools:datasheet-transcribe`. For Cursor, copy or symlink `skills/*` into `~/.cursor/skills/` or the project’s `.cursor/skills/`. Skills assume `AGNI_DATASHEET_ROOT` for on-disk layout; review overlay paths (`projects/`, `designs/`) still come from your house-designs checkout.
 
 ## Docs
 

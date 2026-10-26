@@ -1,0 +1,11 @@
+{
+  "name": "datasheet-tools",
+  "owner": { "name": "Sri Panyam" },
+  "plugins": [
+    {
+      "name": "datasheet-tools",
+      "source": "./",
+      "description": "Skills for the datasheet corpus: datasheet-download and datasheet-transcribe."
+    }
+  ]
+}
