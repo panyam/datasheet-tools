@@ -9,7 +9,7 @@ Outputs are meant for rebuild automation (download skill, CI mirrors), not as a 
 for the internal index. See docs/corpus-rebuild.md.
 
 Usage:
-  export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
+  export AGNI_DATASHEET_ROOT=path_to_your_datasheets_folder
   python3 tools/filter_index_public.py
   python3 tools/filter_index_public.py --index /path/index.yaml --out /path/index.public.yaml
   python3 tools/filter_index_public.py --sources --require-url --require-electrical

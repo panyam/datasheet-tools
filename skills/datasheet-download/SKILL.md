@@ -11,9 +11,9 @@ the Playwright browser), and how to flag a partial doc as `_BRIEF`.
 
 ## Corpus + tools (split repos)
 
-- **Corpus on disk:** `$AGNI_DATASHEET_ROOT` (e.g. `~/work/hw/datasheets`). Layout:
+- **Corpus on disk:** `$AGNI_DATASHEET_ROOT` (e.g. `~/datasheets`). Layout:
   `$AGNI_DATASHEET_ROOT/<vendor>/<part>/<part>.pdf` plus doc-IR and `sources.yaml` / `index.yaml`.
-- **Scripts:** `~/work/hw/datasheet-tools` (`genindex.py`, etc.). Export `AGNI_DATASHEET_ROOT` before
+- **Scripts:** `$AGNI_DATASHEET_TOOLS_ROOT` (`genindex.py`, etc.). Export `AGNI_DATASHEET_ROOT` before
   running them. Legacy copies under `datasheets/tools/` still work but are deprecated.
 
 ## Confidentiality (C16) — say it, don't hide it

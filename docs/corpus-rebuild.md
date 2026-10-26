@@ -13,6 +13,11 @@ The corpus **`index.yaml`** is a catalog of documents (paths, hashes, covers/var
 
 Set **`AGNI_DATASHEET_ROOT`** to the corpus directory (see repo README).
 
+```bash
+export AGNI_DATASHEET_ROOT=~/datasheets # or path to your datasheets folder
+export AGNI_DATASHEET_TOOLS_ROOT=~/datasheet-tools # or path to your datasheet-tools checkout folder
+```
+
 ## Five-step loop (full internal corpus)
 
 1. **Manifest** — Use the full `index.yaml` or a filtered `index.public.yaml` as the list of `pdf:` paths to restore.
@@ -21,7 +26,6 @@ Set **`AGNI_DATASHEET_ROOT`** to the corpus directory (see repo README).
 4. **Regenerate index** — From `datasheet-tools`:
 
    ```bash
-   export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
    python3 tools/genindex.py /tmp/idx.json \
      "$AGNI_DATASHEET_ROOT/index.yaml" \
      "$(date +%Y-%m-%d)"
@@ -36,7 +40,6 @@ Set **`AGNI_DATASHEET_ROOT`** to the corpus directory (see repo README).
 For mirrors or automation that must not depend on gated/NDA files:
 
 ```bash
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 python3 tools/filter_index_public.py --sources --require-url
 ```
 
@@ -53,8 +56,7 @@ Outputs default to **`index.public.yaml`**, **`sources.public.yaml`** and **`ove
 Set the corpus root, then run the batch fetcher from **datasheet-tools** (manifest can live in the tools repo or under the corpus):
 
 ```bash
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
-cd ~/work/hw/datasheet-tools
+cd $AGNI_DATASHEET_TOOLS_ROOT
 
 # Preview
 python3 tools/fetch_manifest.py --manifest sources.public.yaml --dry-run
@@ -74,14 +76,13 @@ python3 tools/fetch_manifest.py --manifest sources.public.yaml --direct-only \
 One-time setup in **datasheet-tools**:
 
 ```bash
-cd ~/work/hw/datasheet-tools
+cd $AGNI_DATASHEET_TOOLS_ROOT
 make setup   # uv venv + requirements.txt (playwright, docling) + bundled Chromium
 ```
 
 Run against the TSV (CWD can be anywhere; corpus from `AGNI_DATASHEET_ROOT`):
 
 ```bash
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 .venv/bin/python tools/fetch_playwright_manifest.py /tmp/datasheet-playwright.tsv
 ```
 
@@ -101,16 +102,10 @@ If you use the **Playwright MCP** plugin instead, ask the agent to run **`browse
 After PDFs land:
 
 ```bash
-<<<<<<< Updated upstream
-cd ~/work/hw/datasheet-tools
-=======
-cd ~/work/hw/Agni/main   # Agni lane checkout
-export DATASHEET_DIR=~/work/hw/datasheets
+cd $AGNI_REPO_ROOT   # Agni lane checkout
 make setup              # once: docling venv for pdf2doc
 make pdf2doc-all        # writes <part>/<stem>.doc.textproto beside each PDF
 make datasheets-status  # confirms extracted / stale
->>>>>>> Stashed changes
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 make pdf2doc-all    # runs Agni pdf2doc (AGNI_DIR, default ../main) with this repo's venv
 # Provenance + judgment corrections; without overrides.yaml, titles/covers/has_electrical
 # fall back to the generator's heuristic guesses.
@@ -158,8 +153,8 @@ parameters {
 5. **Verify load** (no design required):
 
 ```bash
-cd ~/work/hw/Agni/main
-go run ./cmd/agni params TPS4H000BQPWPRQ1 --params ~/work/hw/projects/<customer>/params
+# Make sure agni is installed
+agni params TPS4H000BQPWPRQ1 --params <path_to_params>
 ```
 
 6. **Run review / Checksmith** with the same params mount (Prana `make serve` mounts `projects/.../params`, or `agni review --params ...`).

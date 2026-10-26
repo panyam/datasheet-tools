@@ -6,8 +6,8 @@ playwright are skipped here; they need the browser recipe in skills/datasheet-do
 run with --list-playwright and fetch those separately).
 
 Usage:
-  export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
-  python3 tools/fetch_manifest.py --manifest ~/work/hw/datasheet-tools/sources.public.yaml
+  export AGNI_DATASHEET_ROOT=<your datasheets folder>
+  python3 tools/fetch_manifest.py --manifest path_to_your_sources.yaml
   python3 tools/fetch_manifest.py --dry-run
   python3 tools/fetch_manifest.py --direct-only
   python3 tools/fetch_manifest.py --list-playwright /tmp/playwright.urls

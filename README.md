@@ -1,6 +1,6 @@
 # datasheet-tools
 
-Scripts and agent skills for the **datasheet corpus**. PDFs, doc-IR (`.doc.textproto`), and generated `index.yaml` stay in a separate tree (typically [`~/work/hw/datasheets`](https://github.com/GM-InnerSource/datasheets) or your org mirror). This repo is only the tooling.
+Scripts and agent skills for the **datasheet corpus**. PDFs, doc-IR (`.doc.textproto`), and generated `index.yaml` stay in a separate tree (typically [`~/datasheets`](https://github.com/GM-InnerSource/datasheets) or your org mirror). This repo is only the tooling.
 
 The same files still live under `tools/` and `.claude/skills/` in the legacy corpus repo for now. New work belongs here; the in-tree copies will be deprecated once callers point at this repo.
 
@@ -9,7 +9,7 @@ The same files still live under `tools/` and `.claude/skills/` in the legacy cor
 All tools read the corpus via **`AGNI_DATASHEET_ROOT`** (absolute path to the directory that contains `sources.yaml`, `index.yaml`, and `<vendor>/<part>/` trees).
 
 ```bash
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
+export AGNI_DATASHEET_ROOT=~/datasheets
 ```
 
 `genindex.py` also accepts an optional fourth CLI argument to override the env var.
@@ -28,8 +28,7 @@ export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 Example:
 
 ```bash
-cd ~/work/hw/datasheet-tools
-export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
+cd path_to_datasheet-tools_checkout
 # <json out> <index.yaml out> <date> [corpus]; reads sources.yaml / overrides.yaml from the corpus root
 python3 tools/genindex.py /tmp/idx.json "$AGNI_DATASHEET_ROOT/index.yaml" "$(date +%Y-%m-%d)"
 ```

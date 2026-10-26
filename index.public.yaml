@@ -1,6 +1,6 @@
 # PUBLIC MANIFEST — subset of index.yaml for download/rebuild automation.
 # Do not hand-edit; regenerate with tools/filter_index_public.py
-# Source: /Users/dzshrh/work/hw/datasheets/index.yaml
+# Source: ~/datasheets/index.yaml
 # Kept 64 / 80 documents (access in ['public', 'public-mirror'], require_url).
 
 # datasheets/index.yaml -- index of the vendor datasheet corpus. ONE ENTRY PER DOCUMENT.

@@ -6,7 +6,7 @@ Install once:
   .venv/bin/playwright install chromium
 
 Usage:
-  export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
+  export AGNI_DATASHEET_ROOT=~/datasheets # or path to your datasheets folder
   .venv/bin/python tools/fetch_playwright_manifest.py /tmp/datasheet-playwright.tsv
   .venv/bin/python tools/fetch_playwright_manifest.py playwright.public.tsv --headed
 """
