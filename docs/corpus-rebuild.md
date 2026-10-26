@@ -67,7 +67,33 @@ python3 tools/fetch_manifest.py --manifest sources.public.yaml --direct-only \
   --list-playwright /tmp/datasheet-playwright.tsv
 ```
 
-**`direct`** entries are fetched with curl (browser user-agent, same idea as the download skill). **`playwright`** / **`js`** entries are not automated in this script. Use the **`datasheet-download`** skill (Playwright MCP, Tier C vendors) on the TSV, one vendor origin per call, with CWD = `$AGNI_DATASHEET_ROOT` and save paths = `<pdf>` from the first column.
+**`direct`** entries are fetched with curl (browser user-agent, same idea as the download skill). **`playwright`** / **`js`** entries need a browser.
+
+### Playwright batch (local Chromium)
+
+One-time setup in **datasheet-tools**:
+
+```bash
+cd ~/work/hw/datasheet-tools
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-playwright.txt
+.venv/bin/playwright install chromium
+```
+
+Run against the TSV (CWD can be anywhere; corpus from `AGNI_DATASHEET_ROOT`):
+
+```bash
+export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
+.venv/bin/python tools/fetch_playwright_manifest.py /tmp/datasheet-playwright.tsv
+```
+
+Use **`--headed`** if a vendor blocks headless Chromium. **`--force`** re-fetches existing PDFs.
+
+The script visits each URL’s **origin** first (cookie wall), then **blob-fetch** + `save_as` into `$AGNI_DATASHEET_ROOT/<pdf path>`. LCSC rows use the viewer → network capture path from the download skill.
+
+### Playwright via Cursor MCP (no local install)
+
+If you use the **Playwright MCP** plugin instead, ask the agent to run **`browser_run_code_unsafe`** once **per row** (or per vendor origin), with **`saveAs`** set to the absolute path under `AGNI_DATASHEET_ROOT`. Use the blob-fetch snippet in **`skills/datasheet-download/SKILL.md` §4. Set MCP CWD to **`$AGNI_DATASHEET_ROOT`** so `.playwright-mcp/` is not mistaken for a vendor folder.
 
 After PDFs land:
 

@@ -21,6 +21,7 @@ export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
 | `tools/genindex.py` | Regenerate `index.yaml` from doc-IR (no PDF reads) |
 | `tools/filter_index_public.py` | Write `index.public.yaml` (+ optional `sources.public.yaml`) for public rebuild |
 | `tools/fetch_manifest.py` | curl-fetch PDFs from `sources.public.yaml` (`direct` rows; lists `playwright` for browser pass) |
+| `tools/fetch_playwright_manifest.py` | Browser-fetch TSV rows (`requirements-playwright.txt` + `playwright install chromium`) |
 | `tools/sweep_pin_relations.py` | Scan doc-IR for pin-to-pin constraint candidates |
 | `tools/pkindex.py` | Internal SharePoint index helper (optional) |
 
