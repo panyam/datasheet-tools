@@ -140,7 +140,11 @@ async def run(args) -> int:
                 print(f"SKIP  {pdf_rel}")
                 continue
             lcsc = "lcsc.com" in url
-            msg = await fetch_one(page, pdf_rel, url, dest, lcsc_mode=lcsc)
+            try:
+                msg = await fetch_one(page, pdf_rel, url, dest, lcsc_mode=lcsc)
+            except Exception as e:
+                # Navigation errors (e.g. st.com dropping the connection) must not abort the batch.
+                msg = f"bad: {str(e).splitlines()[0]}"
             print(f"{msg.split()[0].upper():4}  {pdf_rel}  {msg}")
             if msg.startswith("bad"):
                 bad += 1
