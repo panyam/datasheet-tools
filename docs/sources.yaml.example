@@ -1,0 +1,25 @@
+# datasheets/sources.yaml -- hand-maintained DOWNLOAD PROVENANCE, merged into index.yaml by genindex.py.
+#
+# WHY A SIDECAR: genindex.py regenerates index.yaml entirely from the doc-IRs, so any provenance
+# hand-added to index.yaml would be overwritten. Where a datasheet came from is NOT in the doc-IR, so it
+# lives here and the generator merges it (by `pdf` path) into each index entry as source_url / access /
+# download_method. An entry with no record here emits access: unknown, download_method: unknown.
+#
+# FIELDS (per pdf path, which matches index.yaml `pdf:`):
+#   url             -- where THIS file was fetched from (vendor page or the exact PDF/mirror URL).
+#   access          -- public        : freely downloadable from the vendor.
+#                      public-mirror : freely downloadable, but from a distributor / third-party mirror.
+#                      gated         : the authoritative full datasheet needs registration/NDA; what we
+#                                      hold is a public brief / summary / overview (see has_electrical).
+#                      nda           : no public document at all (such parts have no file, so no entry).
+#   download_method -- direct     : plain HTTP GET (curl / browser-UA GET).
+#                      js         : needed in-page JS but no full browser automation.
+#                      playwright : required the Playwright browser (anti-bot, viewer, or scraped link).
+#                      none       : not downloaded.
+# Provenance for the /datasheet-download skill; keep it honest (leave unknown rather than guess a URL).
+
+sources:
+  # --- TI (vendor-direct, ti.com/lit/ds/symlink) ---
+  "ti/INA226/INA226.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/ina226-q1.pdf"
+    access: public
