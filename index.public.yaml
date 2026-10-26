@@ -1,0 +1,1162 @@
+# PUBLIC MANIFEST — subset of index.yaml for download/rebuild automation.
+# Do not hand-edit; regenerate with tools/filter_index_public.py
+# Source: /Users/dzshrh/work/hw/datasheets/index.yaml
+# Kept 64 / 80 documents (access in ['public', 'public-mirror'], require_url).
+
+# datasheets/index.yaml -- index of the vendor datasheet corpus. ONE ENTRY PER DOCUMENT.
+#
+# WHY THIS FILE EXISTS. The folder layout is one dir per PART, but a datasheet almost
+# always specifies a FAMILY: AD2426/AD2427/AD2428 share one sheet, TCAN1144/1145/1146
+# share SLLSF80B. With nowhere to record that, the same document got filed twice
+# (found: two byte-identical duplicate pairs) and family members were invisible.
+#
+# THE TWO LEVELS, AND WHY THEY ARE SEPARATE:
+#   covers   -- part designations AS PRINTED on the sheet (AD2426, AD2427, AD2428).
+#   variants -- ordering codes the sheet names (AD2428WCCSZ, AD2428BCPZ). A BOM
+#               carries one of THESE.
+# The PartSpec param join is an exact, case-insensitive MPN match with no suffix
+# stripping and no package-code fuzzing (datasheet/param/set.go: "a near-miss MPN is
+# a different part until a human says otherwise"). So a seed for a board part must be
+# keyed on the ordering code, not the family name. Use this index to find WHICH SHEET
+# to read; a PartSpec in projects/<customer>/params/ records what it says.
+#
+# GENERATED, with a hand-reviewed judgment layer. Deterministic fields (pdf, doc_ir,
+# content_hash, pages, doc_number, published, revised, covers, variants) are mined
+# from each <PART>.doc.textproto's first pages -- never from the PDF. `kind` and the
+# curated `covers` involve judgment. Regenerate with genindex.py; do not hand-edit
+# the deterministic fields, they will be overwritten.
+#
+# TWO CURATED SIDECARS are merged in (edit THOSE, never this generated file):
+#   datasheets/sources.yaml   -- download PROVENANCE: source_url, access, download_method. Not in the
+#     doc-IR (it records WHERE a file came from). access: public | public-mirror | gated | nda;
+#     download_method: direct | js | playwright | none; missing record -> access/method: unknown.
+#   datasheets/overrides.yaml -- CORRECTIONS to the heuristic judgment fields (title, published, kind,
+#     has_electrical, covers) and dir_name_mismatch_ack, applied on top of the generator's guess so a
+#     human fix persists instead of being reverted on the next run.
+# Both key on the pdf path. See the /datasheet-download skill.
+#
+# CONFIDENTIALITY: this index holds part numbers and document metadata only, which are
+# vendor-public facts. The PDFs and doc-IRs it points at are vendor-licensed and live in
+# THIS repo (GM-InnerSource/datasheets), which is the internal boundary CONSTRAINTS C16
+# means by "inside the deployment boundary". They are gitignored from the hw workspace
+# and must never be committed to the shareable engine repo. Transcribed FACTS (a value
+# plus its citation) may cross into projects/<customer>/params/; the documents may not.
+
+version: 1
+generated: 2026-09-07
+generator: "genindex.py (doc-IR pages 1-3 + full-text variant scan)"
+vendors: [adi, epson, infineon, kds, kec, kyocera, littelfuse, marvell, microchip, mps, murata, nxp, onsemi, st, ti, ublox]
+
+# --- documents ------------------------------------------------------------
+documents:
+  - pdf: "adi/MAX20403/MAX20403.pdf"
+    vendor: "adi"
+    filed_under: "adi/MAX20403"
+    doc_ir: "adi/MAX20403/MAX20403.doc.textproto"
+    content_hash: "sha256:243f7a156d7895a54d7d064a11f3e58a3e9b41d4d58da04fd24bb4ffee767355"
+    kind: "datasheet"
+    pages: "19"
+    revised: "Rev. 13"
+    title: "Automotive 36V, 2.5A/3.5A, Fully Integrated Synchronous Silent Switcher Buck Converters"
+    has_electrical: true
+    source_url: "https://www.analog.com/media/en/technical-documentation/data-sheets/max20402-max20403.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["MAX20403"]
+    variants: ["MAX20403AFLA/VY", "MAX20403AFLB/VY", "MAX20403AFLC/VY", "MAX20403AFLD/VY", "MAX20403AFLE/VY", "MAX20403AFLF/VY"]
+
+  - pdf: "epson/FA-2016/FA-2016_BRIEF.pdf"
+    vendor: "epson"
+    filed_under: "epson/FA-2016"
+    doc_ir: "epson/FA-2016/FA-2016_BRIEF.doc.textproto"
+    content_hash: "sha256:f2ded8eba62e86e2900816d9b646a924e44d29130dab0b17443828536049cff0"
+    kind: "brief"
+    pages: "2"
+    title: "FA2016AS    38.400000MHz    7.0    +10.0-10.0"
+    has_electrical: true
+    source_url: "https://download.epsondevice.com/td/pdf/brief/FA2016AS_en.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["FA2016AS"]
+
+  - pdf: "epson/FC-135/FC-135.pdf"
+    vendor: "epson"
+    filed_under: "epson/FC-135"
+    doc_ir: "epson/FC-135/FC-135.doc.textproto"
+    content_hash: "sha256:7906f6bce8e15c8e4c570e31969ec27c1f4880917e28160529e898a0cbbf48b9"
+    kind: "short-form"
+    pages: "3"
+    title: "kHz Range Crystal unit"
+    has_electrical: true
+    source_url: "https://download.epsondevice.com/td/pdf/td_xtal_32khz/FC-135_Q13FC13500004_en.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["FC-135"]
+
+  - pdf: "kds/DSO223SD/DSO223SD.pdf"
+    vendor: "kds"
+    filed_under: "kds/DSO223SD"
+    doc_ir: "kds/DSO223SD/DSO223SD.doc.textproto"
+    content_hash: "sha256:2b1f3a041925ea9ddd08f423dcc7822e35a40a0c52e570dc5476ca34ae9b1792"
+    kind: "short-form"
+    pages: "1"
+    title: "DSO223SK/DSO323SK/DSO223SJ/DSO323SJ/DSO223SD/DSO323SD"
+    has_electrical: true
+    source_url: "https://kvarci.ru/files/files/dso223_323s_series_car_en.pdf"
+    access: "public-mirror"
+    download_method: "direct"
+    covers: ["DSO223S", "DSO323S", "DSO223SK", "DSO323SK", "DSO223SJ", "DSO323SJ", "DSO223SD", "DSO323SD", "DSO223"]
+    variants: ["DSO223/323SD", "DSO223/323SJ", "DSO223/323SK"]
+
+  - pdf: "kds/DSX321G/DSX321G.pdf"
+    vendor: "kds"
+    filed_under: "kds/DSX321G"
+    doc_ir: "kds/DSX321G/DSX321G.doc.textproto"
+    content_hash: "sha256:7e6fcd843682b89a0fa1679fc499fd8a5f416cafecd73d428207e7d770be05cd"
+    kind: "datasheet"
+    pages: "13"
+    title: "DSX321G SMD Crystal Unit (3.2x2.5 mm, 4-pad)"
+    has_electrical: true
+    source_url: "https://www.lcsc.com/datasheet/C93235.pdf"
+    access: "public-mirror"
+    download_method: "playwright"
+    covers: ["DSX321G"]
+
+  - pdf: "kec/PS05TBUL2/PS05TBUL2.pdf"
+    vendor: "kec"
+    filed_under: "kec/PS05TBUL2"
+    doc_ir: "kec/PS05TBUL2/PS05TBUL2.doc.textproto"
+    content_hash: "sha256:a5426750f5ae9a2c33061f074be690dab0feb913eec41513f96e28751609fcf8"
+    kind: "datasheet"
+    pages: "5"
+    title: "Non Suffix: ULP-2 Package ex) PS05TBUL2 -RTL/H"
+    has_electrical: true
+    source_url: "https://www.keccorp.com/kr/product/image_product.asp?gu=1&idx=1060"
+    access: "public"
+    download_method: "playwright"
+    covers: ["PS05TBUL2"]
+    variants: ["PS05TBUL2-RTL"]
+
+  - pdf: "littelfuse/SESD1004/SESD1004.pdf"
+    vendor: "littelfuse"
+    filed_under: "littelfuse/SESD1004"
+    doc_ir: "littelfuse/SESD1004/SESD1004.doc.textproto"
+    content_hash: "sha256:f4808aab7f93af5ce0c618b5c4f13d0841e8d0ca1e63954a4fa8829de15983f1"
+    kind: "datasheet"
+    pages: "6"
+    title: "SESD Series Ultra Low Capacitance Diode Arrays"
+    has_electrical: true
+    source_url: "https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-array-sesd-series-ultra-low-capacitance-diode-arrays-datasheet?assetguid=01c4d07e-3f17-4300-a27d-0488aa7bb205"
+    access: "public"
+    download_method: "playwright"
+    covers: ["SESD1004"]
+    variants: ["SESD1004Q4UG-0020-090"]
+
+  - pdf: "littelfuse/SP3522/SP3522.pdf"
+    vendor: "littelfuse"
+    filed_under: "littelfuse/SP3522"
+    doc_ir: "littelfuse/SP3522/SP3522.doc.textproto"
+    content_hash: "sha256:16da21f182814e6be60594d3ee3928c0dc8e7dcabc042159b939d3f11cbd0a38"
+    kind: "datasheet"
+    pages: "6"
+    title: "TVS Diode Array Datasheet"
+    has_electrical: true
+    source_url: "https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-array-sp3522-series-datasheet?assetguid=e4f031d6-9b59-4e00-a84f-cb4424caf7e6"
+    access: "public"
+    download_method: "playwright"
+    covers: ["SP3522"]
+    variants: ["SP3522-01ETG", "SP3522-01UTG"]
+
+  - pdf: "mps/MPQ2177/MPQ2177.pdf"
+    vendor: "mps"
+    filed_under: "mps/MPQ2177"
+    doc_ir: "mps/MPQ2177/MPQ2177.doc.textproto"
+    content_hash: "sha256:6a4b2ff79a1eefa4a9e20d4701c86e25b912cb0f3b86de0491eb254f609c7a7f"
+    kind: "datasheet"
+    pages: "26"
+    revised: "Rev. 1.0"
+    title: "Designed for Automotive Applications"
+    has_electrical: true
+    source_url: "https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPQ2177GQHE-AEC1/document_id/9743/"
+    access: "public"
+    download_method: "playwright"
+    covers: ["MPQ2177"]
+    variants: ["MPQ2177GQHE", "MPQ2177GQHE-12-AEC1", "MPQ2177GQHE-18-AEC1", "MPQ2177GQHE-AEC1", "MPQ2177GQHE-AEC1-Z", "MPQ2177GQHE-12-AEC1-Z", "MPQ2177GQHE-18-AEC1-Z", "MPQ2177GQHE-Z"]
+
+  - pdf: "mps/MPQ2179/MPQ2179.pdf"
+    vendor: "mps"
+    filed_under: "mps/MPQ2179"
+    doc_ir: "mps/MPQ2179/MPQ2179.doc.textproto"
+    content_hash: "sha256:bf575fccd9011ac4b57aed1a9a1ac32f6bebfe12d7f9d4226df20320c5b72f6a"
+    kind: "datasheet"
+    pages: "25"
+    revised: "Rev. 1.0"
+    title: "Constant-on-time  (COT)  control  provides  fast transient response and eases loop stabilization. Fault protections include cycle-by-cycle current limiting and thermal shutdown."
+    has_electrical: true
+    source_url: "https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPQ2179GQHE-AEC1/document_id/10657/"
+    access: "public"
+    download_method: "playwright"
+    covers: ["MPQ2179"]
+    variants: ["MPQ2179GQHE", "MPQ2179GQHE-AEC1", "MPQ2179GQHE-Z"]
+
+  - pdf: "nxp/FS2633/FS2633.pdf"
+    vendor: "nxp"
+    filed_under: "nxp/FS2633"
+    doc_ir: "nxp/FS2633/FS2633.doc.textproto"
+    content_hash: "sha256:de8cd43d76a7203e3448a72f029698f5d3627d476736f8e071aa397129eb3ccc"
+    kind: "datasheet"
+    pages: "162"
+    revised: "Rev. 6.1"
+    title: "FS26 Safety System Basis Chip with Low Power for ASIL D/ASIL B (product short data sheet)"
+    has_electrical: true
+    source_url: "https://www.nxp.com/docs/en/data-sheet/FS26_SDS.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["FS26"]
+    variants: ["FS2601B", "FS2633B", "FS2600B", "FS2600D", "FS2601D", "FS2602B", "FS2602D", "FS2603B", "FS2603D", "FS260X", "FS2610D", "FS2611B", "FS2611D", "FS2612B", "FS2612D", "FS2613B", "FS2613D", "FS261X", "FS2620B", "FS2620D", "FS2621B", "FS2621D", "FS2622B", "FS2622D"]
+
+  - pdf: "nxp/KW47/KW47.pdf"
+    vendor: "nxp"
+    filed_under: "nxp/KW47"
+    doc_ir: "nxp/KW47/KW47.doc.textproto"
+    content_hash: "sha256:0ae64f5728c1c3bc7966e3495e8033f106eea112d78ed94dc37d6a4eac929680"
+    kind: "datasheet"
+    pages: "80"
+    revised: "Rev. 4"
+    title: "KW47 Product Family"
+    has_electrical: true
+    source_url: "https://www.nxp.com/docs/en/data-sheet/KW47DS.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["KW47", "KW47B42ZBXAFTBX", "KW47B42Z9XAFTBX", "KW47B42Z8XAFTBX", "KW47Z420BXAFTBX", "KW47Z4209XAFTBX", "KW47Z4208XAFTBX"]
+    variants: ["KW47B42ZB7AFTBT", "KW47B42Z", "KW47B42Z83AFTBR", "KW47B42Z83AFTBT", "KW47B42Z96AFTBR", "KW47B42Z96AFTBT", "KW47B42Z97AFTBR", "KW47B42Z97AFTBT", "KW47B42ZB2AFTBR", "KW47B42ZB2AFTBT", "KW47B42ZB3AFTBR", "KW47B42ZB3AFTBT", "KW47B42ZB6AFTBR", "KW47B42ZB6AFTBT", "KW47B42ZB7AFTBR", "KW47RM", "KW47SRM", "KW47Z42082AFTBR", "KW47Z42082AFTBT", "KW47Z42092AFTBR", "KW47Z42092AFTBT", "KW47Z420B2AFTBR", "KW47Z420B2AFTBT", "KW47Z420B3AFTBR"]
+
+  - pdf: "onsemi/NL27WZ16/NL27WZ16.pdf"
+    vendor: "onsemi"
+    filed_under: "onsemi/NL27WZ16"
+    doc_ir: "onsemi/NL27WZ16/NL27WZ16.doc.textproto"
+    content_hash: "sha256:db0331baf5a72f5e83ea1df850b527deba47e8428af1347db9f7daa6a378674e"
+    kind: "datasheet"
+    pages: "13"
+    title: "NL27WZ16 Dual Buffer"
+    has_electrical: true
+    source_url: "https://www.onsemi.com/pdf/datasheet/nl27wz16-d.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["NL27WZ16"]
+    variants: ["NL27WZ16DFT2G", "NL27WZ16DBVT1G", "NL27WZ16MU1TCG", "NL27WZ16MU2TCG", "NL27WZ16MU3TCG"]
+
+  - pdf: "st/TSZ122/TSZ122.pdf"
+    vendor: "st"
+    filed_under: "st/TSZ122"
+    doc_ir: "st/TSZ122/TSZ122.doc.textproto"
+    content_hash: "sha256:4a57160e181dd503cef0b2f30b5965701f86408898f2c23de630ff70a4e9abbc"
+    kind: "datasheet"
+    pages: "37"
+    revised: "Rev. 11"
+    title: "TSZ121/TSZ122/TSZ124 Very High Accuracy (5 uV) Zero-Drift Micropower 5 V Operational Amplifiers"
+    has_electrical: true
+    source_url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/9d/1c/c1/8f/72/a2/48/95/DM00062815.pdf/files/DM00062815.pdf/jcr:content/translations/en.DM00062815.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["TSZ121", "TSZ122", "TSZ124"]
+    variants: ["TSZ121IYCT", "TSZ122IDT", "TSZ122IST", "TSZ122IYDT", "TSZ121ICT", "TSZ121ILT", "TSZ121IYLT", "TSZ122IQ2T", "TSZ122IYD", "TSZ122IYST", "TSZ124IPT", "TSZ124IQ4T", "TSZ124IY", "TSZ124IYPT"]
+
+  - pdf: "st/VNL5160S5/VNL5160S5.pdf"
+    vendor: "st"
+    filed_under: "st/VNL5160S5"
+    doc_ir: "st/VNL5160S5/VNL5160S5.doc.textproto"
+    content_hash: "sha256:009fa117cb1d2d2a100c1c1559b351872cb897f0854fd34b667076342a4b360f"
+    kind: "datasheet"
+    pages: "27"
+    revised: "Rev. 3"
+    title: "VNL5160N3-E / VNL5160S5-E OMNIFET III Fully Protected Low-Side Driver"
+    has_electrical: true
+    source_url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/15/01/c6/20/b1/3f/42/18/CD00250767.pdf/files/CD00250767.pdf/jcr:content/translations/en.CD00250767.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["VNL5160S5-E"]
+
+  - pdf: "st/VNL5300S5/VNL5300S5.pdf"
+    vendor: "st"
+    filed_under: "st/VNL5300S5"
+    doc_ir: "st/VNL5300S5/VNL5300S5.doc.textproto"
+    content_hash: "sha256:af0a1a1ecaeaad92cae549ee3550883be084d482aa01ade5a4fb8ba230df013d"
+    kind: "datasheet"
+    pages: "22"
+    revised: "Rev. 6"
+    title: "VNL5300S5-E OMNIFET III Fully Protected Low-Side Driver"
+    has_electrical: true
+    source_url: "https://www.st.com/resource/en/datasheet/vnl5300s5-e.pdf"
+    access: "public"
+    download_method: "playwright"
+    covers: ["VNL5300S5-E"]
+
+  - pdf: "ti/ADS1115/ADS1115.pdf"
+    vendor: "ti"
+    filed_under: "ti/ADS1115"
+    doc_ir: "ti/ADS1115/ADS1115.doc.textproto"
+    content_hash: "sha256:5fe00cf9509daba7ca311cd0a461debc563dd57598c5de3bf9c31903dc2238da"
+    kind: "datasheet"
+    pages: "57"
+    doc_number: "SBAS444E"
+    published: "May 2009"
+    revised: "December 2024"
+    title: "ADS1113, ADS1114, ADS1115 SBAS444E - MAY 2009 - REVISED DECEMBER 2024"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/ads1115.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["ADS1113", "ADS1114", "ADS1115", "ADS111X"]
+    variants: ["ADS1113IDGSR", "ADS1113IDGST", "ADS1113IRUGR", "ADS1113IRUGT", "ADS1114IDGSR", "ADS1114IDGST", "ADS1114IRUGR", "ADS1114IRUGT", "ADS1114IRUGTG4", "ADS1115IDGSR", "ADS1115IDGST", "ADS1115IRUGR", "ADS1115IRUGT", "ADS1115IRUGTG4", "ADS1115IDYNR", "ADS1113-Q1", "ADS1114-Q1", "ADS1115-Q1"]
+
+  - pdf: "ti/DP83867/DP83867.pdf"
+    vendor: "ti"
+    filed_under: "ti/DP83867"
+    doc_ir: "ti/DP83867/DP83867.doc.textproto"
+    content_hash: "sha256:f990ea98eb8339bace34f64f4a55cea057502ed1c8728d3f400b9374bd0976c0"
+    kind: "datasheet"
+    pages: "138"
+    doc_number: "SNLS484J"
+    published: "February 2015"
+    revised: "June 2026"
+    title: "DP83867IR, DP83867CR"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/dp83867ir.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["DP83867IR", "DP83867CR"]
+    variants: ["DP83867IRPAP", "DP83867CRRGZ", "DP83867CRRGZR", "DP83867CRRGZT", "DP83867IRPAPRG4", "DP83867IRRGZTG4", "DP83867IRRGZ", "DP83867IRRGZ/CRRGZ", "DP83867IRPAPR", "DP83867IRPAPT", "DP83867IRPAPTG4", "DP83867IRRGZR", "DP83867IRRGZT", "DP83867IRPA", "DP83867IRRG"]
+
+  - pdf: "ti/DRV8145P/DRV8145P.pdf"
+    vendor: "ti"
+    filed_under: "ti/DRV8145P"
+    doc_ir: "ti/DRV8145P/DRV8145P.doc.textproto"
+    content_hash: "sha256:42d7cbd8aa8437bf60e1f54946700809c808de0fc03085e9637b37725abed3ec"
+    kind: "datasheet"
+    pages: "68"
+    doc_number: "SLVSG22B"
+    published: "January 2023"
+    revised: "March 2024"
+    title: "DRV8145-Q1 Automotive Half Bridge Driver with Integrated Current Sense and Diagnostics"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/drv8145-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["DRV8145-Q1"]
+    variants: ["DRV8145P-Q1", "DRV8145S-Q1", "DRV8145H-Q1", "DRV8145HQRXZRQ1", "DRV8145PQPWPRQ1", "DRV8145SQRXZRQ1"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/DRV8245P/DRV8245P.pdf"
+    vendor: "ti"
+    filed_under: "ti/DRV8245P"
+    doc_ir: "ti/DRV8245P/DRV8245P.doc.textproto"
+    content_hash: "sha256:ef9b9567d4c2ffedbea2314f79650adc08b3beb39523808d7f5b351a89096c85"
+    kind: "datasheet"
+    pages: "82"
+    doc_number: "SLVSFJ1E"
+    published: "November 2021"
+    revised: "June 2026"
+    title: "DRV8245-Q1 Automotive H-Bridge Driver with Integrated Current Sense and Diagnostics"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/drv8245-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["DRV8245-Q1"]
+    variants: ["DRV8245HQPWPRQ1", "DRV8245HQRXZRQ1", "DRV8245PQPWPRQ1", "DRV8245S-Q1", "DRV8245SQPWPRQ1", "DRV8245SQRXZRQ1", "DRV8245HRXZQ1", "DRV8245H-Q1", "DRV8245P-Q1"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/INA226/INA226.pdf"
+    vendor: "ti"
+    filed_under: "ti/INA226"
+    doc_ir: "ti/INA226/INA226.doc.textproto"
+    content_hash: "sha256:98d4b30a1227a72b51609d16585f5a45e131b6a3dd1f04b7dc18a490cc36ef55"
+    kind: "datasheet"
+    pages: "40"
+    doc_number: "SBOS743B"
+    published: "July 2015"
+    revised: "September 2024"
+    title: "INA226-Q1 AEC-Q100, 36V, 16-Bit, Ultra-Precise, I 2 C Output Current, Voltage, and Power Monitor With Alert"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/ina226-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["INA226-Q1"]
+    variants: ["INA226AQDGSRQ1", "INA226EVM"]
+
+  - pdf: "ti/LM1117/LM1117.pdf"
+    vendor: "ti"
+    filed_under: "ti/LM1117"
+    doc_ir: "ti/LM1117/LM1117.doc.textproto"
+    content_hash: "sha256:957ae45275a5dfa76c1ac0d7a45116871cccb0d8e6726ddc203968f98cac3c2c"
+    kind: "datasheet"
+    pages: "46"
+    doc_number: "SNOS412Q"
+    published: "February 2000"
+    revised: "January 2023"
+    title: "LM1117 800-mA Low-Dropout Linear Regulator"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lm1117.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LM1117", "LM1117I"]
+    variants: ["LM1117-ADJ", "LM1117I-3", "LM1117I-5", "LM1117I-ADJ", "LM1117DT-1", "LM1117DT-2", "LM1117DT-3", "LM1117DT-5", "LM1117DT-ADJ/NOPB", "LM1117DTX-1", "LM1117DTX-2", "LM1117DTX-3", "LM1117DTX-5", "LM1117DTX-ADJ/NOPB", "LM1117IDT-3", "LM1117IDT-5", "LM1117IDT-ADJ/NOPB", "LM1117ILD-ADJ/NOPB", "LM1117IMP-3", "LM1117IMP-5", "LM1117IMP-ADJ/NOPB", "LM1117LD-1", "LM1117LD-2", "LM1117LD-3"]
+
+  - pdf: "ti/LM358/LM358.pdf"
+    vendor: "ti"
+    filed_under: "ti/LM358"
+    doc_ir: "ti/LM358/LM358.doc.textproto"
+    content_hash: "sha256:f78315aaf2d453b0c3cf7c56d968b90e65d8bc93d52c13f8fac2361bfc6ae1ee"
+    kind: "datasheet"
+    pages: "68"
+    doc_number: "SLOS068AB"
+    published: "June 1976"
+    revised: "October 2024"
+    title: "LM158, LM158A, LM258, LM258A LM2904, LM2904B, LM2904BA, LM2904V LM358, LM358A, LM358B, LM358BA"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lm358.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LM358", "LM358A", "LM358B", "LM358BA"]
+    variants: ["LM358ADR", "LM358AP", "LM358APE4", "LM358BAIDR", "LM358BIDR", "LM358DR", "LM358PE4", "LM358BIDRG4", "LM358DGKR", "LM358ADGKR", "LM358BAIDDFR", "LM358BAIDDFRG4", "LM358BAIPWR", "LM358BIDGKR", "LM358BIPWR", "LM358BIPWRG4", "LM358APWR", "LM358BAIDGKR", "LM358BIDDFR", "LM358PSR", "LM358PWR", "LM358BAIDRG4", "LM358ADE4", "LM358APW"]
+
+  - pdf: "ti/LMK1C1104/LMK1C1104.pdf"
+    vendor: "ti"
+    filed_under: "ti/LMK1C1104"
+    doc_ir: "ti/LMK1C1104/LMK1C1104.doc.textproto"
+    content_hash: "sha256:4403ce872cf979483288c8194b5036dd0369a55ed9b8a40614fc22c29467b0fd"
+    kind: "datasheet"
+    pages: "27"
+    doc_number: "SNAS791D"
+    published: "December 2019"
+    revised: "February 2022"
+    title: "LMK1C1102, LMK1C1103, LMK1C1104"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lmk1c1104.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LMK1C1102", "LMK1C1103", "LMK1C1104", "LMK1C110X"]
+    variants: ["LMK1C1102DQFR", "LMK1C1102DQFT", "LMK1C1102PWR", "LMK1C1102PWRG4", "LMK1C1103PWR", "LMK1C1103PWRG4", "LMK1C1104DQFR", "LMK1C1104DQFT", "LMK1C1104PWR", "LMK1C1104PWRG4", "LMK1C1104PW"]
+
+  - pdf: "ti/LMQ61460/LMQ61460.pdf"
+    vendor: "ti"
+    filed_under: "ti/LMQ61460"
+    doc_ir: "ti/LMQ61460/LMQ61460.doc.textproto"
+    content_hash: "sha256:75324079b4cc7d85b4c3da0bc89fb6fd3e682ca8178f689d8707ffcedbd78b6b"
+    kind: "datasheet"
+    pages: "59"
+    doc_number: "SNVSBP4D"
+    published: "March 2020"
+    revised: "August 2026"
+    title: "LMQ61460-Q1 Automotive 3V to 36V, 6A, Synchronous Step-Down Converter With Mitigated Interference and Noise Technology (MINT)"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lmq61460-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LMQ61460-Q1"]
+    variants: ["LMQ61460AASQRJRRQ1", "LMQ61460AFSQRJRRQ1", "LMQ61460EVM", "LMQ61460AAS-Q1", "LMQ61460AFS-Q1"]
+
+  - pdf: "ti/LMR33630/LMR33630.pdf"
+    vendor: "ti"
+    filed_under: "ti/LMR33630"
+    doc_ir: "ti/LMR33630/LMR33630.doc.textproto"
+    content_hash: "sha256:e9e3a4a07429d2a8c087f1a58dc3f804863aa658f5047314fe32f8e67db1ca5c"
+    kind: "datasheet"
+    pages: "60"
+    doc_number: "SNVSAN3F"
+    published: "August 2017"
+    revised: "November 2020"
+    title: "LMR33630 SIMPLE SWITCHER ®  3.8-V to 36-V, 3-A Synchronous Step-down Voltage Converter"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lmr33630.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LMR33630"]
+    variants: ["LMR33630ADDA", "LMR33630BDDA", "LMR33630CDDA", "LMR33630ADDAR", "LMR33630BDDAR", "LMR33630CDDAR", "LMR33630ADDAG4", "LMR33630ARNXR", "LMR33630ARNXT", "LMR33630BRNXR", "LMR33630BRNXRG4", "LMR33630BRNXT", "LMR33630CRNXR", "LMR33630CRNXT", "LMR33630ARNX", "LMR33630BRNX", "LMR33630CRNX", "LMR33630CDDARG4", "LMR33630-Q1", "LMR33630IS"]
+
+  - pdf: "ti/LMR604103/LMR604103.pdf"
+    vendor: "ti"
+    filed_under: "ti/LMR604103"
+    doc_ir: "ti/LMR604103/LMR604103.doc.textproto"
+    content_hash: "sha256:752a2d733edf0557ea9dd974de13b5557b4f451829d2035b95623070f7319553"
+    kind: "datasheet"
+    pages: "47"
+    doc_number: "SNAS870B"
+    published: "July 2025"
+    revised: "March 2026"
+    title: "LMR60410-Q1 3V to 36V, 1A, Automotive, Synchronous Buck Converter Optimized for High Power Density, Low EMI, and Low Output Capacitance"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lmr60410-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LMR60410-Q1"]
+    variants: ["LMR60410QEVM", "LMR604103SRAKRQ1", "LMR604105SRAKRQ1", "LMR604105SBRAKRQ1", "LMR604103BRAKRQ1", "LMR604103RAKRQ1", "LMR604103SBRAKRQ1", "LMR604105BRAKRQ1", "LMR604105RAKRQ1"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/LMR66410/LMR66410.pdf"
+    vendor: "ti"
+    filed_under: "ti/LMR66410"
+    doc_ir: "ti/LMR66410/LMR66410.doc.textproto"
+    content_hash: "sha256:dee234fb39b3dfecfa3f91bdcd0992c3974c7bc10eec89496da2b7dd3771b9f7"
+    kind: "datasheet"
+    pages: "50"
+    doc_number: "SNVSCJ3"
+    published: "December 2023"
+    title: "LMR66410, LMR66420, LMR66430"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/lmr66410.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["LMR66410", "LMR66420", "LMR66430"]
+    variants: ["LMR66430R5R", "LMR66430R5RXBR", "LMR66410R5RXBR", "LMR66420R5RXBR", "LMR66430MB3RXBR", "LMR66430-2EVM", "LMR66410-Q1", "LMR66420-Q1", "LMR66430-EP", "LMR66430-Q1"]
+
+  - pdf: "ti/MSP430FR2355/MSP430FR2355.pdf"
+    vendor: "ti"
+    filed_under: "ti/MSP430FR2355"
+    doc_ir: "ti/MSP430FR2355/MSP430FR2355.doc.textproto"
+    content_hash: "sha256:463d24c31d2f0add7ac2bbede3018018be13ed682b826aae46c33537e90c603a"
+    kind: "datasheet"
+    pages: "146"
+    doc_number: "SLASEC4D"
+    published: "May 2018"
+    revised: "December 2019"
+    title: "MSP430FR2355, MSP430FR2353, MSP430FR2155, MSP430FR2153"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/msp430fr2355.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["MSP430FR2355", "MSP430FR2353", "MSP430FR2155", "MSP430FR2153", "MSP430FR235X", "MSP430FR215X"]
+    variants: ["MSP430FR2153TPT", "MSP430FR2155TPT", "MSP430FR2353TPT", "MSP430FR2355TPT", "MSP430FR2153TDBT", "MSP430FR2153TPTR", "MSP430FR2155TDBT", "MSP430FR2155TPTR", "MSP430FR2155TRSMR", "MSP430FR2353TDBT", "MSP430FR2353TPTR", "MSP430FR2355TDBT", "MSP430FR2355TPTR", "MSP430FR2153TDBTR", "MSP430FR2153TRHAR", "MSP430FR2153TRHAT", "MSP430FR2153TRSMR", "MSP430FR2153TRSMT", "MSP430FR2155TDBTR", "MSP430FR2155TRHAR", "MSP430FR2155TRHAT", "MSP430FR2155TRSMT", "MSP430FR2353TDBTR", "MSP430FR2353TRHAR"]
+
+  - pdf: "ti/SN65HVD230/SN65HVD230.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN65HVD230"
+    doc_ir: "ti/SN65HVD230/SN65HVD230.doc.textproto"
+    content_hash: "sha256:e98fc0c59168c035d7958111924dae7e21e46ab45bdfd6400aef048299d6d716"
+    kind: "datasheet"
+    pages: "43"
+    doc_number: "SLOS346O"
+    published: "March 2001"
+    revised: "April 2018"
+    title: "SN65HVD230, SN65HVD231, SN65HVD232"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn65hvd230.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN65HVD230", "SN65HVD231", "SN65HVD232", "SN65HVD23X"]
+    variants: ["SN65HVD230DR", "SN65HVD231DR", "SN65HVD232DR", "SN65HVD230DRG4", "SN65HVD231DRG4", "SN65HVD232DRG4"]
+
+  - pdf: "ti/SN74AHC138/SN74AHC138.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN74AHC138"
+    doc_ir: "ti/SN74AHC138/SN74AHC138.doc.textproto"
+    content_hash: "sha256:1d023eea893b7624e8569f3d92cb43891a94e8698dda6a52a488e9365e5252e1"
+    kind: "datasheet"
+    pages: "30"
+    doc_number: "SCLSA04"
+    published: "March 2024"
+    title: "SN74AHC138-Q1 Automotive 3-Line to 8-Line Decoders/Demultiplexers"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn74ahc138-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN74AHC138-Q1"]
+    variants: ["SN74AHC138QPWRQ1"]
+
+  - pdf: "ti/SN74HCS151/SN74HCS151.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN74HCS151"
+    doc_ir: "ti/SN74HCS151/SN74HCS151.doc.textproto"
+    content_hash: "sha256:cfa566f967b90d21f2c4425e570d725923e88c4c07df4fd57d9f64c59e486a36"
+    kind: "datasheet"
+    pages: "34"
+    doc_number: "SCLS819C"
+    published: "August 2020"
+    revised: "January 2026"
+    title: "SN74HCS151-Q1 Automotive 8-to-1 Multiplexer with Schmitt-Trigger Inputs"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn74hcs151-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN74HCS151-Q1"]
+    variants: ["SN74HCS151QDRQ1", "SN74HCS151QPWRQ1", "SN74HCS151D-Q1", "SN74HCS151PW-Q1", "SN74HCS151WBQB-Q1"]
+
+  - pdf: "ti/SN74LV541A/SN74LV541A.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN74LV541A"
+    doc_ir: "ti/SN74LV541A/SN74LV541A.doc.textproto"
+    content_hash: "sha256:8818c229615e2afec507e5d71290438a9fe281584f1747f7162759931be0c7d8"
+    kind: "datasheet"
+    pages: "26"
+    doc_number: "SCLS904A"
+    published: "August 2022"
+    revised: "November 2022"
+    title: "SN74LV541A-Q1 Automotive Octal Buffers/Drivers With 3-State Outputs"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn74lv541a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN74LV541A-Q1"]
+    variants: ["SN74LV541AQDGSRQ1"]
+
+  - pdf: "ti/SN74LVC1G08/SN74LVC1G08.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN74LVC1G08"
+    doc_ir: "ti/SN74LVC1G08/SN74LVC1G08.doc.textproto"
+    content_hash: "sha256:79190db690445620d50e79b64cd20854da9111b2291002c4c4abb5cf47295f06"
+    kind: "datasheet"
+    pages: "49"
+    doc_number: "SCES217Z"
+    published: "April 1999"
+    revised: "May 2019"
+    title: "SN74LVC1G08 Single 2-Input Positive-AND Gate"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN74LVC1G08"]
+    variants: ["SN74LVC1G08DBVR", "SN74LVC1G08DCKR", "SN74LVC1G08DBVT", "SN74LVC1G08DCKT", "SN74LVC1G08DSFR", "SN74LVC1G08DRY2", "SN74LVC1G08DSF2", "SN74LVC1G08DBVRG4", "SN74LVC1G08DRLR", "SN74LVC1G08DCKRG4", "SN74LVC1G08DCKTG4", "SN74LVC1G08DPWR", "SN74LVC1G08DRYR", "SN74LVC1G08DRYRG4", "SN74LVC1G08DSFRG4", "SN74LVC1G08YZPR", "SN74LVC1G08-EP", "SN74LVC1G08-Q1", "SN74LVC1G08DBVRE4", "SN74LVC1G08DBVTE4", "SN74LVC1G08DBVTG4", "SN74LVC1G08DCKRE4", "SN74LVC1G08DCKTE4", "SN74LVC1G08DRLRG4"]
+
+  - pdf: "ti/SN74LVC1G14/SN74LVC1G14.pdf"
+    vendor: "ti"
+    filed_under: "ti/SN74LVC1G14"
+    doc_ir: "ti/SN74LVC1G14/SN74LVC1G14.doc.textproto"
+    content_hash: "sha256:91c1fb54d97bc7ed672ac9e2a061d67ad2b17125d61dd7826bdae6515e1c5e43"
+    kind: "datasheet"
+    pages: "35"
+    doc_number: "SCES865E"
+    published: "February 2015"
+    revised: "October 2025"
+    title: "SN74LVC1G14-Q1 Single Schmitt-Trigger Inverter"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/sn74lvc1g14-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["SN74LVC1G14-Q1"]
+    variants: ["SN74LVC1G14DBVRQ1", "SN74LVC1G14-EP"]
+
+  - pdf: "ti/TCA9539A/TCA9539A.pdf"
+    vendor: "ti"
+    filed_under: "ti/TCA9539A"
+    doc_ir: "ti/TCA9539A/TCA9539A.doc.textproto"
+    content_hash: "sha256:470bca3ed1ed956d14c30b76590117154335a5b7ad0523bd59bc88b1d781a040"
+    kind: "datasheet"
+    pages: "37"
+    doc_number: "SCPS292"
+    published: "July 2025"
+    title: "TCA9539A-Q1 Automotive Low-Voltage 16-Bit I2C and SMBus Low-Power I/O Expander with Interrupt Output, Reset Pin, and Configuration Registers"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tca9539a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TCA9539A-Q1"]
+    variants: ["TCA9539AQPWRQ1"]
+
+  - pdf: "ti/TCAN1042/TCAN1042.pdf"
+    vendor: "ti"
+    filed_under: "ti/TCAN1042"
+    doc_ir: "ti/TCAN1042/TCAN1042.doc.textproto"
+    content_hash: "sha256:241f92273566f9dfb5e0860d9dbb3a87d3ac5c24dc39cd7494286abc3820bc0d"
+    kind: "datasheet"
+    pages: "41"
+    doc_number: "SLLSES7D"
+    published: "March 2016"
+    revised: "October 2021"
+    title: "TCAN1042H, TCAN1042HG TCAN1042HGV, TCAN1042HV"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tcan1042-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TCAN1042H", "TCAN1042HG", "TCAN1042HGV", "TCAN1042HV", "TCAN1042"]
+    variants: ["TCAN1042HGVDR", "TCAN1042HGVD", "TCAN1042HGVDRG4", "TCAN1042HVDR", "TCAN1042HVDRG4", "TCAN1042GV", "TCAN1042HDR", "TCAN1042HDRG4", "TCAN1042HGDR", "TCAN1042H-Q1", "TCAN1042HD", "TCAN1042HG-Q1", "TCAN1042HGD", "TCAN1042HGV-Q1", "TCAN1042HV-Q1", "TCAN1042HVD"]
+
+  - pdf: "ti/TCAN1043/TCAN1043.pdf"
+    vendor: "ti"
+    filed_under: "ti/TCAN1043"
+    doc_ir: "ti/TCAN1043/TCAN1043.doc.textproto"
+    content_hash: "sha256:7798817f6efd7fd3fcfc9eea3d24698eca4dacb6cc0c2122c67240006da47cd4"
+    kind: "datasheet"
+    pages: "58"
+    doc_number: "SLLSFD1F"
+    published: "January 2021"
+    revised: "July 2025"
+    title: "TCAN1043A-Q1 Automotive Low-Power Fault Protected CAN FD Transceiver With Sleep Mode"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tcan1043a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TCAN1043A-Q1", "TCAN1043AT-Q1"]
+    variants: ["TCAN1043ADMTRQ1", "TCAN1043ADRQ1", "TCAN1043ADYYRQ1", "TCAN1043ATDMTRQ1", "TCAN1043ATDRQ1"]
+
+  - pdf: "ti/TCAN1145/TCAN1145.pdf"
+    vendor: "ti"
+    filed_under: "ti/TCAN1145"
+    doc_ir: "ti/TCAN1145/TCAN1145.doc.textproto"
+    content_hash: "sha256:e49035f177924af9ad272ef815dc736e22495d4c981fee0c00e56364b9709680"
+    kind: "datasheet"
+    pages: "119"
+    doc_number: "SLLSF80B"
+    published: "October 2019"
+    revised: "March 2022"
+    title: "TCAN1144-Q1, TCAN1145-Q1, TCAN1146-Q1"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tcan1145-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TCAN1144-Q1", "TCAN1145-Q1", "TCAN1146-Q1"]
+    variants: ["TCAN1145DRQ1", "TCAN1146DRQ1", "TCAN1144DMTRQ1", "TCAN1144DRQ1", "TCAN1144DYYRQ1", "TCAN1145DMTRQ1", "TCAN1145DYYRQ1", "TCAN1146DMTRQ1", "TCAN1146DYYRQ1", "TCAN1144D-Q1", "TCAN1144DMT-Q1", "TCAN1144DYY-Q1", "TCAN1145D-Q1", "TCAN1145DMT-Q1", "TCAN1145DYY-Q1", "TCAN1146D-Q1", "TCAN1146DMT-Q1", "TCAN1146DYY-Q1"]
+
+  - pdf: "ti/TIC10024/TIC10024.pdf"
+    vendor: "ti"
+    filed_under: "ti/TIC10024"
+    doc_ir: "ti/TIC10024/TIC10024.doc.textproto"
+    content_hash: "sha256:ab6440e912f865148b564a633bef706bc6f365656d5eb2be07c31139ea625114"
+    kind: "datasheet"
+    pages: "82"
+    doc_number: "SCPS268A"
+    published: "September 2017"
+    revised: "February 2022"
+    title: "TIC10024-Q1 24-Input Multiple Switch Detection Interface (MSDI) Device With Adjustable Wetting Current for Automotive Systems"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tic10024-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TIC10024-Q1"]
+    variants: ["TIC10024QDCPRQ1"]
+
+  - pdf: "ti/TLIN2029/TLIN2029.pdf"
+    vendor: "ti"
+    filed_under: "ti/TLIN2029"
+    doc_ir: "ti/TLIN2029/TLIN2029.doc.textproto"
+    content_hash: "sha256:6a49f251bbdfdba69b55dec7c426892e130730c537c06488c036b67b13961863"
+    kind: "datasheet"
+    pages: "47"
+    doc_number: "SLLSEY6G"
+    published: "October 2017"
+    revised: "February 2024"
+    title: "TLIN2029-Q1 Fault Protected LIN Transceiver with Dominant State Timeout"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tlin2029-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TLIN2029-Q1"]
+    variants: ["TLIN2029DQ1", "TLIN2029DRBRQ1", "TLIN2029DRBTQ1", "TLIN2029DRQ1", "TLIN2029DRB"]
+
+  - pdf: "ti/TLV73318/TLV73318.pdf"
+    vendor: "ti"
+    filed_under: "ti/TLV73318"
+    doc_ir: "ti/TLV73318/TLV73318.doc.textproto"
+    content_hash: "sha256:b8c9823dac587393a687a5b6f475b7b0fba1d64155c084cf8c68b5ff244a0832"
+    kind: "datasheet"
+    pages: "34"
+    doc_number: "SBVS283F"
+    published: "August 2016"
+    revised: "October 2020"
+    title: "TLV733P-Q1 Capacitor-Free, 300-mA, Low Dropout (LDO) Linear Regulator"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tlv733p-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TLV733P-Q1"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/TMP117/TMP117.pdf"
+    vendor: "ti"
+    filed_under: "ti/TMP117"
+    doc_ir: "ti/TMP117/TMP117.doc.textproto"
+    content_hash: "sha256:aedaed6478bb23ba5a1a13a87291d9be68ab768f8b90c152899978e458ef379d"
+    kind: "datasheet"
+    pages: "50"
+    doc_number: "SNOSD82D"
+    published: "June 2018"
+    revised: "September 2022"
+    title: "TMP117 high-accuracy temperature sensor"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tmp117.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TMP117"]
+    variants: ["TMP117AIDRVR", "TMP117AIDRVRG4", "TMP117AIYBGR", "TMP117MAIDRVR", "TMP117MAIYBGR", "TMP117NAIDRVR", "TMP117NAIYBGR", "TMP117AIDRVT", "TMP117AIYBGT", "TMP117MAIYBGT", "TMP117NAIDRVT", "TMP117NAIYBGT", "TMP117XYBG"]
+
+  - pdf: "ti/TMUX1309A/TMUX1309A.pdf"
+    vendor: "ti"
+    filed_under: "ti/TMUX1309A"
+    doc_ir: "ti/TMUX1309A/TMUX1309A.doc.textproto"
+    content_hash: "sha256:6cff7c1303c44ba5cb9143c80f279838c5ba62309b983bde8a191fb47def07b2"
+    kind: "datasheet"
+    pages: "52"
+    doc_number: "SCDS476A"
+    published: "June 2024"
+    revised: "June 2025"
+    title: "TMUX13xxA-Q1 Automotive 5-V Bidirectional Current-Injection-Controlled Multiplexers"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tmux1309a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TMUX1309A"]
+    variants: ["TMUX1309A-Q1", "TMUX1309AQPWRQ1", "TMUX1309AQBQBRQ1", "TMUX1309AQDYYRQ1", "TMUX1309AQ1"]
+
+  - pdf: "ti/TPD4E05U06/TPD4E05U06.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPD4E05U06"
+    doc_ir: "ti/TPD4E05U06/TPD4E05U06.doc.textproto"
+    content_hash: "sha256:c167cf1e72a5473a4d2c59b6a3c0251498701da05b7785919b9ceaae3b3e02c6"
+    kind: "datasheet"
+    pages: "39"
+    doc_number: "SLVSBO7O"
+    published: "December 2012"
+    revised: "August 2024"
+    title: "TPD1E05U06, TPD4E05U06, TPD6E05U06"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPD1E05U06", "TPD4E05U06", "TPD6E05U06", "TPDXE05U06"]
+    variants: ["TPD6E05U06RVZR", "TPD1E05U06DPYR", "TPD1E05U06DPYT", "TPD1E05U06DYAR", "TPD4E05U06DQAR", "TPD4E05U06DQA", "TPD1E05U06DPYTG4", "TPD4E05U06DQARG4", "TPD6E05U06RVZRG4", "TPD1E05U06-Q1", "TPD1E05U06DPY", "TPD4E05U06-Q1", "TPD6E05U06RVZ"]
+
+  - pdf: "ti/TPS12121/TPS12121.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS12121"
+    doc_ir: "ti/TPS12121/TPS12121.doc.textproto"
+    content_hash: "sha256:87694fea8c6e79e69709874e33999c7860d9d31d98f170042ad88d1d458d2f4f"
+    kind: "datasheet"
+    pages: "55"
+    doc_number: "SLUSFL9"
+    published: "April 2025"
+    title: "TPS1212-Q1 SLUSFL9 - APRIL 2025"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps1212-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS1212-Q1", "TPS12120-Q1", "TPS12121-Q1"]
+    variants: ["TPS12120QRGERQ1", "TPS12121QRGERQ1", "TPS1212X-Q1"]
+
+  - pdf: "ti/TPS22918/TPS22918.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS22918"
+    doc_ir: "ti/TPS22918/TPS22918.doc.textproto"
+    content_hash: "sha256:1b28eb58003d28b18bf919a15734056f296a499bebee2bd493a1e4358c4dfb1c"
+    kind: "datasheet"
+    pages: "30"
+    doc_number: "SLVSD76C"
+    published: "February 2016"
+    revised: "July 2017"
+    title: "TPS22918 5.5-V, 2-A, Single-Channel Load Switch"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps22918.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS22918"]
+    variants: ["TPS22918DBVR", "TPS22918DBVT", "TPS22918DBVTG4", "TPS22918-Q1"]
+
+  - pdf: "ti/TPS22995/TPS22995.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS22995"
+    doc_ir: "ti/TPS22995/TPS22995.doc.textproto"
+    content_hash: "sha256:64b4f622a07043d451ccb4667782fd7bc42eb0c6693e2901a7072b67315cc37d"
+    kind: "datasheet"
+    pages: "23"
+    doc_number: "SLVSGT2A"
+    published: "June 2022"
+    revised: "December 2022"
+    title: "TPS22995H-Q1 5.5-V, 3-A, 19-mΩ On-Resistance Automotive Load Switch"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps22995h-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS22995H-Q1"]
+    variants: ["TPS22995HQDDCRQ1"]
+
+  - pdf: "ti/TPS25947/TPS25947.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS25947"
+    doc_ir: "ti/TPS25947/TPS25947.doc.textproto"
+    content_hash: "sha256:051ecddfe545b8b9f4f992148d24f385f75b1116fd36bec358f85008a7d919ec"
+    kind: "datasheet"
+    pages: "75"
+    doc_number: "SLVSFC9C"
+    published: "October 2020"
+    revised: "May 2026"
+    title: "TPS25947xx, 2.7V to 23V, 5.5A, 28mΩ True Reverse Current Blocking eFuse with Input Reverse Polarity Protection"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps25947.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS25947", "TPS25947XX"]
+    variants: ["TPS259470X", "TPS259472X", "TPS259474X", "TPS259472X/4X", "TPS259470X/4X", "TPS25947XA", "TPS259470ARPWR", "TPS259470LRPWR", "TPS259470X/2X", "TPS259472ARPWR", "TPS259472LRPWR", "TPS259474ARPWR", "TPS259474LRPWR", "TPS259474L", "TPS25947XL", "TPS259470L", "TPS259472A", "TPS259472L", "TPS2594704X", "TPS259470A", "TPS259470ARPW", "TPS259470LRPW", "TPS259472ARPW", "TPS259472LRPW"]
+
+  - pdf: "ti/TPS2HB16/TPS2HB16.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS2HB16"
+    doc_ir: "ti/TPS2HB16/TPS2HB16.doc.textproto"
+    content_hash: "sha256:83860ae4e964362c7276f25d10953ed36291dafdcd48f41ee6b767a765c5db88"
+    kind: "datasheet"
+    pages: "58"
+    doc_number: "SLVSDV7C"
+    published: "February 2018"
+    revised: "February 2020"
+    title: "TPS2HB16-Q1 Dual-Channel Smart High-Side Switch"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps2hb16-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS2HB16"]
+    variants: ["TPS2HB16-Q1", "TPS2HB16AQPWPRQ1", "TPS2HB16BQPWPRQ1", "TPS2HB16FQPWPRQ1", "TPS2HB16AQPWPR", "TPS2HB16B-Q1", "TPS2HB16BQPWPR", "TPS2HB16F-Q1", "TPS2HB16FQPWPR"]
+
+  - pdf: "ti/TPS2HCS05/TPS2HCS05_BRIEF.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS2HCS05"
+    doc_ir: "ti/TPS2HCS05/TPS2HCS05_BRIEF.doc.textproto"
+    content_hash: "sha256:9e62eb1c7e881de37f6e6671964c10cd6a02e584d172ae3328fcb20ad13c7c58"
+    kind: "brief"
+    pages: "4"
+    doc_number: "SLVSKW3"
+    published: "December 2025"
+    title: "TPS2HCS05-Q1 Dual-Channel SPI Smart High-Side Switch (ADVANCE INFORMATION)"
+    has_electrical: false
+    source_url: "https://www.ti.com/lit/ds/symlink/tps2hcs05-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS2HCS05-Q1"]
+
+  - pdf: "ti/TPS3808/TPS3808.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS3808"
+    doc_ir: "ti/TPS3808/TPS3808.doc.textproto"
+    content_hash: "sha256:682abbc06a0cc46659d330729fcc86e1d328feb85fb6f3ab71f3921895caefdb"
+    kind: "datasheet"
+    pages: "38"
+    doc_number: "SBVS050M"
+    published: "May 2004"
+    revised: "March 2023"
+    title: "TPS3808 Low-Quiescent-Current, Programmable-Delay Supervisory Circuit"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps3808.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS3808"]
+    variants: ["TPS3808G01", "TPS3808G01DBVR", "TPS3808G01DBVT", "TPS3808G01DRVT", "TPS3808G12DRVT", "TPS3808G18DBVR", "TPS3808G18DBVT", "TPS3808G30DBVR", "TPS3808G30DRVR", "TPS3808G30DRVT", "TPS3808G33", "TPS3808G33DBVR", "TPS3808G01DBVR1G4", "TPS3808G01DRVR", "TPS3808G01DRVR1G4", "TPS3808G09DBVR", "TPS3808G09DBVR1G4", "TPS3808G09DBVT", "TPS3808G125DBVR", "TPS3808G125DBVRG4", "TPS3808G125DBVT", "TPS3808G12DBVR", "TPS3808G12DBVR1G4", "TPS3808G12DBVT"]
+
+  - pdf: "ti/TPS4H000B/TPS4H000B.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS4H000B"
+    doc_ir: "ti/TPS4H000B/TPS4H000B.doc.textproto"
+    content_hash: "sha256:37c51f4ff7d4a167f5a1ebc232b22eb4b4bffc77ca74a905ca5bcdddeb6f5cda"
+    kind: "datasheet"
+    pages: "39"
+    doc_number: "SLVSD73B"
+    published: "December 2015"
+    revised: "March 2018"
+    title: "TPS4H000-Q1 40-V, 1000-mOhm Quad-Channel Smart High-Side Switch"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps4h000-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS4H000-Q1"]
+    variants: ["TPS4H000AQPWPRQ1", "TPS4H000BQPWPRQ1"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/TPS4H160/TPS4H160.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS4H160"
+    doc_ir: "ti/TPS4H160/TPS4H160.doc.textproto"
+    content_hash: "sha256:7cdecb3650ed6ff5ff720b5e5b85b7b1b7255fd355ae6ea0e3ee3aeffc3ad702"
+    kind: "datasheet"
+    pages: "41"
+    doc_number: "SLVSCV8E"
+    published: "December 2015"
+    revised: "June 2025"
+    title: "TPS4H160-Q1 40V, 160mΩ Automotive Quad-Channel Smart High-Side Switch"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps4h160-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS4H160-Q1"]
+    variants: ["TPS4H160AQPWPRQ1", "TPS4H160BQPWPRQ1"]
+
+  - pdf: "ti/TPS551892/TPS551892.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS551892"
+    doc_ir: "ti/TPS551892/TPS551892.doc.textproto"
+    content_hash: "sha256:5c61331246e4e3866916b970d52d6be68885e12c5cf708f93286d602c2905bc4"
+    kind: "datasheet"
+    pages: "38"
+    doc_number: "SLVSHR3"
+    published: "July 2024"
+    title: "TPS551892-Q1, Automotive, 27V, 8A, Fully Integrated Buck-boost Converter"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps551892-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS551892-Q1"]
+    variants: ["TPS551892QWRYQRQ1"]
+
+  - pdf: "ti/TPS65222/TPS65222.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS65222"
+    doc_ir: "ti/TPS65222/TPS65222.doc.textproto"
+    content_hash: "sha256:30554a0fde7646b5aa64736479c0e4218648877c90116afe3d3e3525f034fff6"
+    kind: "datasheet"
+    pages: "12"
+    doc_number: "SLVSH32"
+    published: "August 2025"
+    title: "TPS65222-Q1 Power Management IC (PMIC) with 4 BUCKs and 3 LDOs for SafetyRelevant Applications"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps65222-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS65222-Q1"]
+    variants: ["TPS6522230WRAHRQ1", "TPS65222C5RAHRQ1"]
+
+  - pdf: "ti/TPS70918/TPS70918.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS70918"
+    doc_ir: "ti/TPS70918/TPS70918.doc.textproto"
+    content_hash: "sha256:bd01fad0eb2defdd3cbe3d07d0d1d8579c8f110dd5420e41df19dc350474eb5f"
+    kind: "datasheet"
+    pages: "38"
+    doc_number: "SLVSCE6D"
+    published: "December 2013"
+    revised: "August 2025"
+    title: "TPS709-Q1 Automotive, 150mA, 30V, 1µA I Q Voltage Regulator With Enable"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps709-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS709-Q1"]
+    variants: ["TPS70933-Q1", "TPS70925QDBVRQ1", "TPS70928QDBVRQ1", "TPS70930QDBVRQ1", "TPS70933QDBVRQ1", "TPS70936QDBVRQ1", "TPS70950QDBVRQ1", "TPS70912-Q1", "TPS70912QDBVRQ1", "TPS70912QDRVRQ1", "TPS70915QDRVRQ1", "TPS70918QDBVRQ1", "TPS70918QDRVRQ1", "TPS70925QDRVRQ1", "TPS70927QDRVRQ1", "TPS70928QDRVRQ1", "TPS70930QDRVRQ1", "TPS70933QDRVRQ1", "TPS70950QDRVRQ1", "TPS70930QDBVRM3Q1", "TPS70933QDBVRM3Q1", "TPS70933", "TPS70933EVM-110", "TPS70950"]
+    dir_name_mismatch_ack: "True"
+
+  - pdf: "ti/TPS74601/TPS74601.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS74601"
+    doc_ir: "ti/TPS74601/TPS74601.doc.textproto"
+    content_hash: "sha256:be99c2d2b8a349d4464ec53ff013d6ac04c56e8d7ec8519075286e604dd3e1d9"
+    kind: "datasheet"
+    pages: "47"
+    doc_number: "SBVS358D"
+    published: "June 2018"
+    revised: "April 2025"
+    title: "TPS746-Q1 Automotive, 1A LDO With Power-Good in Small Wettable Flank Packages"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps746-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS746-Q1"]
+    variants: ["TPS74601PQWDRBRQ1", "TPS74601PBQWDRVRQ1", "TPS74601PCQWDRVRQ1", "TPS74601PQWDRVRQ1", "TPS74610PQWDRBRQ1", "TPS74610PQWDRVRQ1", "TPS746115PQWDRBRQ1", "TPS74611PQWDRBRQ1", "TPS74611PQWDRVRQ1", "TPS746125PQWDRBRQ1", "TPS74612PQWDRBRQ1", "TPS74612PQWDRVRQ1", "TPS746135PQWDRBRQ1", "TPS74613PQWDRBRQ1", "TPS74615PQWDRBRQ1", "TPS74615PQWDRVRQ1", "TPS74617PQWDRBRQ1", "TPS74618PQWDRBRQ1", "TPS74618PQWDRVRQ1", "TPS74625PQWDRBRQ1", "TPS74625PQWDRVRQ1", "TPS74628PQWDRVRQ1", "TPS74629PQWDRVRQ1", "TPS74630PQWDRBRQ1"]
+    dir_name_mismatch_ack: "True"
+    duplicate_of: ["ti/TPS74615/TPS74615.pdf"]
+
+  - pdf: "ti/TPS74615/TPS74615.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS74615"
+    doc_ir: "ti/TPS74615/TPS74615.doc.textproto"
+    content_hash: "sha256:be99c2d2b8a349d4464ec53ff013d6ac04c56e8d7ec8519075286e604dd3e1d9"
+    kind: "datasheet"
+    pages: "47"
+    doc_number: "SBVS358D"
+    published: "June 2018"
+    revised: "April 2025"
+    title: "TPS746-Q1 Automotive, 1A LDO With Power-Good in Small Wettable Flank Packages"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps746-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS746-Q1"]
+    variants: ["TPS74601PQWDRBRQ1", "TPS74601PBQWDRVRQ1", "TPS74601PCQWDRVRQ1", "TPS74601PQWDRVRQ1", "TPS74610PQWDRBRQ1", "TPS74610PQWDRVRQ1", "TPS746115PQWDRBRQ1", "TPS74611PQWDRBRQ1", "TPS74611PQWDRVRQ1", "TPS746125PQWDRBRQ1", "TPS74612PQWDRBRQ1", "TPS74612PQWDRVRQ1", "TPS746135PQWDRBRQ1", "TPS74613PQWDRBRQ1", "TPS74615PQWDRBRQ1", "TPS74615PQWDRVRQ1", "TPS74617PQWDRBRQ1", "TPS74618PQWDRBRQ1", "TPS74618PQWDRVRQ1", "TPS74625PQWDRBRQ1", "TPS74625PQWDRVRQ1", "TPS74628PQWDRVRQ1", "TPS74629PQWDRVRQ1", "TPS74630PQWDRBRQ1"]
+    dir_name_mismatch_ack: "True"
+    duplicate_of: ["ti/TPS74601/TPS74601.pdf"]
+
+  - pdf: "ti/TPS7B4256/TPS7B4256.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS7B4256"
+    doc_ir: "ti/TPS7B4256/TPS7B4256.doc.textproto"
+    content_hash: "sha256:f6155cb8d51afed1ce70086261ca9c58042615430eb8642e5b9714714ea9510a"
+    kind: "datasheet"
+    pages: "38"
+    doc_number: "SBVS397A"
+    published: "September 2023"
+    revised: "November 2023"
+    title: "TPS7B4256-Q1 Automotive, 70-mA, 40-V, Voltage-Tracking LDO With 6-mV Tracking Tolerance"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps7b4256-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS7B4256-Q1"]
+    variants: ["TPS7B4256QDDARQ1", "TPS7B4256QDRQ1"]
+
+  - pdf: "ti/TPS7B7702/TPS7B7702.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPS7B7702"
+    doc_ir: "ti/TPS7B7702/TPS7B7702.doc.textproto"
+    content_hash: "sha256:b60e1551aede40304d41dbbf46937a564ff97a748eaaca3833da2cac7e4c9fd5"
+    kind: "datasheet"
+    pages: "28"
+    doc_number: "SLVSCE8C"
+    published: "January 2015"
+    revised: "September 2018"
+    title: "TPS7B7701-Q1, TPS7B7702-Q1"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tps7b7702-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPS7B7701-Q1", "TPS7B7702-Q1"]
+    variants: ["TPS7B7701QPWPRQ1", "TPS7B7702QPWPRQ1", "TPS7B7702EVM"]
+
+  - pdf: "ti/TPSI3052/TPSI3052.pdf"
+    vendor: "ti"
+    filed_under: "ti/TPSI3052"
+    doc_ir: "ti/TPSI3052/TPSI3052.doc.textproto"
+    content_hash: "sha256:7d4f273e2795bfcf672a0c1768a2bc43a46cb422a563e2cf27ea38b62c918772"
+    kind: "datasheet"
+    pages: "46"
+    doc_number: "SLVSFY5D"
+    published: "April 2022"
+    revised: "February 2026"
+    title: "TPSI3052-Q1 Automotive Reinforced Isolated Switch Driver With Integrated 15V Gate Supply"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tpsi3052-q1.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TPSI3052-Q1"]
+    variants: ["TPSI3052S-Q1", "TPSI3052QDWZRQ1", "TPSI3052SQDWZRQ1"]
+
+  - pdf: "ti/TSM24CA/TSM24CA.pdf"
+    vendor: "ti"
+    filed_under: "ti/TSM24CA"
+    doc_ir: "ti/TSM24CA/TSM24CA.doc.textproto"
+    content_hash: "sha256:0baa754fbbba65f45481f196744b8b47c435810350fb7597d1868a9c4e2dc9a9"
+    kind: "datasheet"
+    pages: "16"
+    doc_number: "SLVSH75A"
+    published: "August 2023"
+    revised: "January 2024"
+    title: "TSM24CA ±24V Low Capacitance Surge Diode for Industrial Networks in SOT-23 Package"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/tsm24ca.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TSM24CA"]
+    variants: ["TSM24CADBZR", "TSM24CA-Q1"]
+
+  - pdf: "ti/TXB0104/TXB0104.pdf"
+    vendor: "ti"
+    filed_under: "ti/TXB0104"
+    doc_ir: "ti/TXB0104/TXB0104.doc.textproto"
+    content_hash: "sha256:a5a73c1e32c2f0fadd0f0f3d0133b916f2916493866c3152376eb8d55e08e343"
+    kind: "datasheet"
+    pages: "58"
+    doc_number: "SCES650K"
+    published: "April 2006"
+    revised: "March 2025"
+    title: "TXB0104 4-Bit Bidirectional Voltage-Level Translator With Automatic Direction Sensing"
+    has_electrical: true
+    source_url: "https://www.ti.com/lit/ds/symlink/txb0104.pdf"
+    access: "public"
+    download_method: "direct"
+    covers: ["TXB0104"]
+    variants: ["TXB0104PWR", "TXB0104DR", "TXB0104RGYR", "TXB0104RUTR", "TXB0104BQAR", "TXB0104NMNR", "TXB0104YZTR", "TXB0104DYYR", "TXB0104DG4", "TXB0104-Q1", "TXB0104BQA", "TXB0104DRG4", "TXB0104DYY", "TXB0104NMN", "TXB0104PW", "TXB0104PWRG4", "TXB0104RGY", "TXB0104RGYRG4", "TXB0104RUT", "TXB0104YZT", "TXB0104ZXU/GXU"]
+
+# --- issues (not recomputed; see full index.yaml) -----------------------
+issues:
+  note: "Run genindex on the full corpus for duplicate/not_extracted lists."

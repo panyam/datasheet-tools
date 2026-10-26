@@ -1,0 +1,259 @@
+# Filtered from sources.yaml — public rebuild manifest only.
+# Regenerate with tools/filter_index_public.py --sources
+sources:
+  "adi/MAX20403/MAX20403.pdf":
+    url: "https://www.analog.com/media/en/technical-documentation/data-sheets/max20402-max20403.pdf"
+    access: "public"
+    download_method: "playwright"
+  "epson/FA-2016/FA-2016_BRIEF.pdf":
+    url: "https://download.epsondevice.com/td/pdf/brief/FA2016AS_en.pdf"
+    access: "public"
+    download_method: "direct"
+  "epson/FC-135/FC-135.pdf":
+    url: "https://download.epsondevice.com/td/pdf/td_xtal_32khz/FC-135_Q13FC13500004_en.pdf"
+    access: "public"
+    download_method: "direct"
+  "kds/DSO223SD/DSO223SD.pdf":
+    url: "https://kvarci.ru/files/files/dso223_323s_series_car_en.pdf"
+    access: "public-mirror"
+    download_method: "direct"
+  "kds/DSX321G/DSX321G.pdf":
+    url: "https://www.lcsc.com/datasheet/C93235.pdf"
+    access: "public-mirror"
+    download_method: "playwright"
+  "kec/PS05TBUL2/PS05TBUL2.pdf":
+    url: "https://www.keccorp.com/kr/product/image_product.asp?gu=1&idx=1060"
+    access: "public"
+    download_method: "playwright"
+  "littelfuse/SESD1004/SESD1004.pdf":
+    url: "https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-array-sesd-series-ultra-low-capacitance-diode-arrays-datasheet?assetguid=01c4d07e-3f17-4300-a27d-0488aa7bb205"
+    access: "public"
+    download_method: "playwright"
+  "littelfuse/SP3522/SP3522.pdf":
+    url: "https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-array-sp3522-series-datasheet?assetguid=e4f031d6-9b59-4e00-a84f-cb4424caf7e6"
+    access: "public"
+    download_method: "playwright"
+  "mps/MPQ2177/MPQ2177.pdf":
+    url: "https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPQ2177GQHE-AEC1/document_id/9743/"
+    access: "public"
+    download_method: "playwright"
+  "mps/MPQ2179/MPQ2179.pdf":
+    url: "https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPQ2179GQHE-AEC1/document_id/10657/"
+    access: "public"
+    download_method: "playwright"
+  "nxp/FS2633/FS2633.pdf":
+    url: "https://www.nxp.com/docs/en/data-sheet/FS26_SDS.pdf"
+    access: "public"
+    download_method: "playwright"
+  "nxp/KW47/KW47.pdf":
+    url: "https://www.nxp.com/docs/en/data-sheet/KW47DS.pdf"
+    access: "public"
+    download_method: "playwright"
+  "onsemi/NL27WZ16/NL27WZ16.pdf":
+    url: "https://www.onsemi.com/pdf/datasheet/nl27wz16-d.pdf"
+    access: "public"
+    download_method: "playwright"
+  "st/TSZ122/TSZ122.pdf":
+    url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/9d/1c/c1/8f/72/a2/48/95/DM00062815.pdf/files/DM00062815.pdf/jcr:content/translations/en.DM00062815.pdf"
+    access: "public"
+    download_method: "playwright"
+  "st/VNL5160S5/VNL5160S5.pdf":
+    url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/15/01/c6/20/b1/3f/42/18/CD00250767.pdf/files/CD00250767.pdf/jcr:content/translations/en.CD00250767.pdf"
+    access: "public"
+    download_method: "playwright"
+  "st/VNL5300S5/VNL5300S5.pdf":
+    url: "https://www.st.com/resource/en/datasheet/vnl5300s5-e.pdf"
+    access: "public"
+    download_method: "playwright"
+  "ti/ADS1115/ADS1115.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/ads1115.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/DP83867/DP83867.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/dp83867ir.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/DRV8145P/DRV8145P.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/drv8145-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/DRV8245P/DRV8245P.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/drv8245-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/INA226/INA226.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/ina226-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LM1117/LM1117.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lm1117.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LM358/LM358.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lm358.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LMK1C1104/LMK1C1104.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lmk1c1104.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LMQ61460/LMQ61460.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lmq61460-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LMR33630/LMR33630.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lmr33630.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LMR604103/LMR604103.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lmr60410-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/LMR66410/LMR66410.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/lmr66410.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/MSP430FR2355/MSP430FR2355.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/msp430fr2355.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN65HVD230/SN65HVD230.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn65hvd230.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN74AHC138/SN74AHC138.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn74ahc138-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN74HCS151/SN74HCS151.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn74hcs151-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN74LV541A/SN74LV541A.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn74lv541a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN74LVC1G08/SN74LVC1G08.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/SN74LVC1G14/SN74LVC1G14.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/sn74lvc1g14-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TCA9539A/TCA9539A.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tca9539a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TCAN1042/TCAN1042.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tcan1042-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TCAN1043/TCAN1043.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tcan1043a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TCAN1145/TCAN1145.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tcan1145-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TIC10024/TIC10024.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tic10024-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TLIN2029/TLIN2029.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tlin2029-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TLV73318/TLV73318.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tlv733p-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TMP117/TMP117.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tmp117.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TMUX1309A/TMUX1309A.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tmux1309a-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPD4E05U06/TPD4E05U06.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tpd4e05u06.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS12121/TPS12121.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps1212-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS22918/TPS22918.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps22918.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS22995/TPS22995.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps22995h-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS25947/TPS25947.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps25947.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS2HB16/TPS2HB16.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps2hb16-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS2HCS05/TPS2HCS05_BRIEF.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps2hcs05-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS3808/TPS3808.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps3808.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS4H000B/TPS4H000B.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps4h000-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS4H160/TPS4H160.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps4h160-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS551892/TPS551892.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps551892-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS65222/TPS65222.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps65222-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS70918/TPS70918.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps709-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS74601/TPS74601.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps746-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS74615/TPS74615.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps746-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS7B4256/TPS7B4256.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps7b4256-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPS7B7702/TPS7B7702.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tps7b7702-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TPSI3052/TPSI3052.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tpsi3052-q1.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TSM24CA/TSM24CA.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/tsm24ca.pdf"
+    access: "public"
+    download_method: "direct"
+  "ti/TXB0104/TXB0104.pdf":
+    url: "https://www.ti.com/lit/ds/symlink/txb0104.pdf"
+    access: "public"
+    download_method: "direct"
