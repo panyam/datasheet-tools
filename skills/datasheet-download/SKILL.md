@@ -117,10 +117,15 @@ Per-vendor quirks (the PDF_URL / navigation that works):
 - **KEC:** product page `keccorp.com/en/product/product_view.asp?idx=<N>`; the datasheet is served via
   `keccorp.com/kr/product/image_product.asp?gu=1&idx=<N>` (NOT the `file_down(id,'n')` calls — those are
   package/packing images). Blob-fetch the `image_product` URL.
-- **LCSC (viewer + cross-origin asset):** the `lcsc.com/datasheet/<Ccode>.pdf` link is an HTML viewer. Attach
-  `page.on('response', r => /application\/pdf/.test(r.headers()['content-type']||'') && urls.push(r.url()))`,
-  `goto` the viewer, wait ~8s, take the captured `datasheet.lcsc.com/...` asset URL, `goto` **its own origin**
-  root, then blob-fetch it (dodges CORS). Regex-parse the origin (`u.match(/^https?:\/\/[^/]+/)[0]`).
+- **LCSC (viewer + cross-origin asset):** the `lcsc.com/datasheet/<Ccode>.pdf` link is an HTML viewer that
+  loads the real PDF in an iframe. `goto` the viewer, wait ~8s, then read the asset URL off the page:
+  `page.$$eval('iframe', els => els.map(e => e.src).filter(s => /^https:\/\/datasheet\.lcsc\.com\//.test(s)))`
+  (shape: `https://datasheet.lcsc.com/datasheet/pdf/<hash>.pdf?productCode=<Ccode>`). Fetch that URL with the
+  Tier B curl helper, or have the user open it and save it. **Do not blob-fetch it in the browser:**
+  `datasheet.lcsc.com/` redirects to `www.lcsc.com`, so the fetch is cross-origin and fails CORS
+  (`TypeError: Failed to fetch`). If you capture responses instead, filter to `https://datasheet.lcsc.com/`:
+  Chrome's own PDF viewer also shows up as an `application/pdf` response, at a `chrome-extension://` URL.
+  Verified 2026-10-26 (DSX321G / C93235).
 
 If the exact PDF URL is unknown, prefer **scraping the product page** for the datasheet anchor over guessing
 filenames. Run one vendor origin per `browser_run_code_unsafe` call to stay under the MCP timeout; do heavy

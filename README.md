@@ -30,9 +30,8 @@ Example:
 ```bash
 cd ~/work/hw/datasheet-tools
 export AGNI_DATASHEET_ROOT=~/work/hw/datasheets
-python3 tools/genindex.py "$AGNI_DATASHEET_ROOT/index.yaml" \
-  "$AGNI_DATASHEET_ROOT/sources.yaml" \
-  "$AGNI_DATASHEET_ROOT/overrides.yaml"
+# <json out> <index.yaml out> <date> [corpus]; reads sources.yaml / overrides.yaml from the corpus root
+python3 tools/genindex.py /tmp/idx.json "$AGNI_DATASHEET_ROOT/index.yaml" "$(date +%Y-%m-%d)"
 ```
 
 ## Skills

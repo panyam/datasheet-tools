@@ -3,3 +3,4 @@ __pycache__/
 .venv/
 playwright.public.tsv
 .DS_Store
+.playwright-mcp/
